@@ -43,7 +43,7 @@ func _process(_delta):
 
 func _ready():
 	for slot in inventorySlots.get_children():
-		slot.connect("gui_input_new", Callable(self, "slotGuiInput"))
+		slot.connect("gui_input_new", Callable(self, "slotGuiInput")) # attaching signals
 		self.connect("setSlotAct", Callable(slot, "setCanSignalMouseHover"))
 		slot.connect("mouseIsHovering", Callable(self, "addToHoveredSlots"))
 		slot.connect("mouseIsHovering", Callable(self, "distributeItems"))
