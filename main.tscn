@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnfh414nt2aep"]
+
+[ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
+[ext_resource type="PackedScene" uid="uid://wo8e8pfrqwdh" path="res://carpetStrand/carpetStrand.tscn" id="2_df5t3"]
+[ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
+[ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi_jar_item.tscn" id="4_jadoj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_puva6"]
+sky_material = SubResource("ProceduralSkyMaterial_utujm")
+
+[sub_resource type="Environment" id="Environment_muwvb"]
+background_mode = 2
+sky = SubResource("Sky_puva6")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_muwvb")
+
+[node name="Player" parent="." instance=ExtResource("1_2blxo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -180, 3, 156)
+JUMP_VELOCITY = 5.0
+
+[node name="CarpetStrand" parent="." groups=["CarpetStrand"] instance=ExtResource("2_df5t3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -174, 2, 156)
+
+[node name="CarpetStrand2" parent="." groups=["CarpetStrand"] instance=ExtResource("2_df5t3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -174, 2, 155)
+
+[node name="CarpetStrand3" parent="." groups=["CarpetStrand"] instance=ExtResource("2_df5t3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -174, 2, 157)
+
+[node name="CarpetStrand4" parent="." groups=["CarpetStrand"] instance=ExtResource("2_df5t3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -174, 2, 154)
+
+[node name="CarpetStrand5" parent="." groups=["CarpetStrand"] instance=ExtResource("2_df5t3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -174, 2, 158)
+
+[node name="room_2" parent="." instance=ExtResource("3_min3e")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
+
+[node name="kimchi_jar_item" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -186.881, 1, 140.436)
+
+[node name="kimchi_jar_item5" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -185.881, 1, 140.436)
+
+[node name="kimchi_jar_item6" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -185.881, 1, 139.436)
+
+[node name="kimchi_jar_item7" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -186.881, 1, 139.436)
+
+[node name="kimchi_jar_item2" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -185.304, 2.5216, 171.291)
+
+[node name="kimchi_jar_item3" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -93.5029, 29.8607, 178.662)
+
+[node name="kimchi_jar_item4" parent="." instance=ExtResource("4_jadoj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -94.2897, 1, 177.766)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ahoq5xso08x"]
+
+[ext_resource type="PackedScene" uid="uid://dklae33jpory4" path="res://blenderModels/room2.blend" id="1_xs2lm"]
+
+[node name="room_2" instance=ExtResource("1_xs2lm")]
