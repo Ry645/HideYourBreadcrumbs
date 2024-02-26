@@ -3,17 +3,19 @@ extends Node
 # dear god fuck i hope this shitty spaghetti code doesn't come back to penetrate my ass later
 # FIX
 
+# let's gooooo i'm fixing it now
+
 #const SlotClass = preload("res://slot.gd")
 
 @onready var inventorySlots = $TextureRect/GridContainer
 @onready var tooltipRoot = $TextureRect/tooltipRoot
 @onready var tooltip:RichTextLabel = $TextureRect/tooltipRoot/tooltipBackground/tooltip
-var holdingItem = null
+var holdingItem:Item = null
 var itemClass = preload("res://item.tscn")
 var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for split items evenly
 var awaitingRightClickReleaseForPlace:bool
 
-var focusedSlot
+var focusedSlot:Slot
 var hoveredSlots:Array = []
 var slotsAreActive:bool
 
@@ -39,7 +41,11 @@ func _process(_delta):
 			distributedItemsNumber = 0
 			emit_signal("resetSlots")
 			emit_signal("setSlotAct", false)
-			holdingItem.update()
+			if holdingItem:
+				holdingItem.update()
+	
+	if focusedSlot && !focusedSlot.mouseInSlot:
+		hideTooltip(lastHoveredSlotForTooltip)
 
 func _ready():
 	for slot in inventorySlots.get_children():
@@ -68,47 +74,30 @@ func slotGuiInput(event, slot):
 	
 	if event is InputEventMouseButton: #mouse click
 		
-		#HEY NO TOUCHY
-		
-		#left click
-		#pressed click
-		#mouse holding item
-		#empty slot
-		if event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem != null && !slot.item: # ready
-			awaitingLeftClickReleaseForPlace = true
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_released() && holdingItem != null && !slot.item && awaitingLeftClickReleaseForPlace: # put item into slot
-			#slot.putIntoSlot(holdingItem) #slap item into empty slot
-			#holdingItem = null #not holding item
-			awaitingLeftClickReleaseForPlace = false
-		
 		#left click
 		#pressed click
 		#mouse holding item
 		#occupied slot
 		#not the same two items
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType: #swap items
+		if event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType: #swap items
 			awaitingLeftClickReleaseForPlace = true
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_released() && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType && awaitingLeftClickReleaseForPlace:
-			if hoveredSlots.size() <= 1:
-				#print("swap")
-				var tempItem = slot.item #need placeholder
-				slot.pickFromSlot() #grab item
-				tempItem.global_position = event.global_position #snap to cursor
-				slot.putIntoSlot(holdingItem) # slap into slot
-				holdingItem = tempItem #complete
-			awaitingLeftClickReleaseForPlace = false
+			if event.is_released() && awaitingLeftClickReleaseForPlace:
+				if hoveredSlots.size() <= 1:
+					#print("swap")
+					var tempItem = slot.item #need placeholder
+					slot.pickFromSlot() #grab item
+					tempItem.global_position = event.global_position #snap to cursor
+					slot.putIntoSlot(holdingItem) # slap into slot
+					holdingItem = tempItem #complete
+				awaitingLeftClickReleaseForPlace = false
 		
 		#left click
 		#pressed click
 		#mouse holding item
-		#occupied slot
-		#same two items
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem != null && slot.item != null && slot.item.itemType == holdingItem.itemType: # add to item number
+		elif event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null: # add to item number
 			awaitingLeftClickReleaseForPlace = true
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_released() && holdingItem != null && slot.item != null && slot.item.itemType == holdingItem.itemType && awaitingLeftClickReleaseForPlace:
-			#slot.addItemNumber(holdingItem)
-			#holdingItem = null
-			awaitingLeftClickReleaseForPlace = false
+			if event.is_released() && awaitingLeftClickReleaseForPlace:
+				awaitingLeftClickReleaseForPlace = false
 		
 		#left click
 		#pressed click
@@ -121,83 +110,27 @@ func slotGuiInput(event, slot):
 		
 		
 		
-		#right click
-		#pressed click
-		#mouse holding item
-		#empty slot
-		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem != null && slot.item == null: #place one into empty slot
-			awaitingRightClickReleaseForPlace = true
-		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_released() && holdingItem != null && slot.item == null && awaitingRightClickReleaseForPlace:
-			#slot.createOneIntoSlot(holdingItem)
-			awaitingRightClickReleaseForPlace = false
+		
 		
 		#right click
-		#pressed click
 		#mouse holding item
-		#occupied slot
-		#same two items
-		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem != null && slot.item != null && slot.item.itemType == holdingItem.itemType: #add one to item in slot
+		if event.button_index == MOUSE_BUTTON_RIGHT && holdingItem != null: #place one into empty slot
 			awaitingRightClickReleaseForPlace = true
-		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_released() && holdingItem != null && slot.item != null && slot.item.itemType == holdingItem.itemType && awaitingRightClickReleaseForPlace:
-			#slot.putOneIntoSlot(holdingItem)
-			awaitingRightClickReleaseForPlace = false
+			if event.is_released() && awaitingRightClickReleaseForPlace:
+				awaitingRightClickReleaseForPlace = false
 		
 		#right click
 		#pressed click
 		#mouse not holding item
 		#occupied slot
 		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem == null && slot.item != null: # take half
+			print("half")
 			holdingItem = slot.pickHalfFromSlot()
 			holdingItem.global_position = event.global_position
-		
-		
-		
-		#previous logic below for the stuff above
-		#stupid if nesting
-		
-		#if event.button_index == MOUSE_BUTTON_LEFT: #left click
-			#
-			#if holdingItem != null: #mouse holding item
-				#
-				#if slot.item == null: # empty slot ********************************************************
-					#slot.putIntoSlot(holdingItem) #slap item into empty slot
-					#holdingItem = null #not holding item
-					#
-				#else: #occupied slot
-					#
-					#if slot.item.itemType != holdingItem.itemType: # not the same two items = switch item ********************************************************
-						##print("swap")
-						#var tempItem = slot.item #need placeholder
-						#slot.pickFromSlot() #grab item
-						#tempItem.global_position = event.global_position #snap to cursor
-						#slot.putIntoSlot(holdingItem) # slap into slot
-						#holdingItem = tempItem #complete
-						#
-					#else: #are the same item = add to item number ********************************************************
-						#slot.addItemNumber(holdingItem)
-						#holdingItem = null
-						#
-			#elif slot.item: #mouse not holding item and there is slot item ********************************************************
-				#holdingItem = slot.item
-				#slot.pickFromSlot()
-				#holdingItem.global_position = event.global_position
-		#
-		#
-		#if event.button_index == MOUSE_BUTTON_RIGHT && event.is_released(): #right click
-			#
-			#if holdingItem != null: #mouse holding item
-				#
-				#if !slot.item: # empty slot ********************************************************
-					#slot.createOneIntoSlot(holdingItem)
-					#
-				#else: #occupied slot
-					#
-					#if slot.item.itemType == holdingItem.itemType: # same two items = add one ********************************************************
-						#slot.putOneIntoSlot(holdingItem)
-						#
-			#elif slot.item: #mouse not holding item and item in slot ********************************************************
-				#holdingItem = slot.pickHalfFromSlot()
-				#holdingItem.global_position = event.global_position
+
+
+
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -236,14 +169,14 @@ func setVisibility(isVisibile):
 
 
 func addTestItems():
-	#for i in range(40):
-		#var itemObj = itemClass.instantiate()
-		#itemObj.itemType = "a"
-		#addItemToInventory(itemObj)
-	#for i in range(10):
-		#var itemObj = itemClass.instantiate()
-		#itemObj.itemType = "b"
-		#addItemToInventory(itemObj)
+	for i in range(20):
+		var itemObj:Item = itemClass.instantiate()
+		itemObj.setVars("carpetStrand", load("res://carpetStrand/carpetStrandImage.png"))
+		addItemToInventory(itemObj)
+	for i in range(20):
+		var itemObj:Item = itemClass.instantiate()
+		itemObj.setVars("kimchi", load("res://jongga_kimchi.png"))
+		addItemToInventory(itemObj)
 		pass
 
 func addToHoveredSlots(slot): #linked to signal to add slots when slots are hovered over
@@ -255,7 +188,7 @@ func addToHoveredSlots(slot): #linked to signal to add slots when slots are hove
 				break
 	if unique:
 		hoveredSlots.append(slot)
-		print("hover")
+		#print("hover")
 
 func distributeItems(slot:Slot): #left click drag items
 	if awaitingLeftClickReleaseForPlace:
@@ -277,7 +210,7 @@ func distributeItems(slot:Slot): #left click drag items
 		else: # dragging into filled slot with not same item
 			hoveredSlots.remove_at(hoveredSlots.size() - 1)
 			return
-		if distributedFirstItem:
+		if distributedFirstItem: #need this to evenly distribute (ie:    5 5 5 5 = 20    ------>    4 4 4 4 4 = 20)
 			var i = 0
 			for slotObj in hoveredSlots:
 				slotObj.item.number = slotObj.item.number - int(distributedItemsNumber/(hoveredSlots.size() - 1)) + int(distributedItemsNumber/hoveredSlots.size())
@@ -297,14 +230,10 @@ func distributeSingleItems(slot:Slot): # right click drag items
 		if slot.item && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
 			slot.putOneIntoSlot(holdingItem)
 		elif !slot.item: # dragging into empty slot
-			var itemObj:Item = itemClass.instantiate()
-			#itemObj.itemType = holdingItem.itemType #earlier set
-			itemObj.setVars(holdingItem.itemType, holdingItem.image)
-			slot.putIntoSlot(itemObj)
+			slot.createOneIntoSlot(holdingItem)
 		else: # dragging into filled slot with not same item
 			hoveredSlots.remove_at(hoveredSlots.size() - 1)
 			return
-		holdingItem.number -= 1
 		holdingItem.updateLabel()
 
 

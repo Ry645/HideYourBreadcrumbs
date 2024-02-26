@@ -33,8 +33,13 @@ func updateExistence():
 func update():
 	updateExistence()
 	updateLabel()
+	#print(self)
 
 func setVars(itemType1:StringName, image1:CompressedTexture2D, number1:int = 1):
 	itemType = itemType1
 	image = image1
 	number = number1
+
+func setVarsFromItem(item:Item):
+	itemType = item.itemType
+	image = item.image
