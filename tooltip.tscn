@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmyh64m2shslu"]
+
+[ext_resource type="Script" path="res://tooltip.gd" id="1_xfug4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yodlc"]
+
+[sub_resource type="Theme" id="Theme_tlt70"]
+default_font_size = 8
+
+[node name="tooltipRoot" type="Node2D"]
+visible = false
+script = ExtResource("1_xfug4")
+
+[node name="tooltipBackground" type="TextureRect" parent="."]
+z_index = 1
+offset_left = 16.0
+offset_top = -28.0
+offset_right = 136.0
+offset_bottom = -16.0
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_yodlc")
+
+[node name="tooltip" type="RichTextLabel" parent="tooltipBackground"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme = SubResource("Theme_tlt70")
+text = "Kimchi"

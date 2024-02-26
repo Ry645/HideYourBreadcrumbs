@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqpgpcfk3m74d"]
+[gd_scene load_steps=5 format=3 uid="uid://bqpgpcfk3m74d"]
 
 [ext_resource type="Script" path="res://player/inventory.gd" id="1_srshc"]
 [ext_resource type="PackedScene" uid="uid://cs8ljt4vij8lx" path="res://slot.tscn" id="2_ex7wt"]
+[ext_resource type="PackedScene" uid="uid://bmyh64m2shslu" path="res://tooltip.tscn" id="3_cdjan"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cjx3m"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yodlc"]
-
-[sub_resource type="Theme" id="Theme_tlt70"]
-default_font_size = 8
 
 [node name="inventory" type="Node"]
 script = ExtResource("1_srshc")
@@ -138,22 +134,4 @@ layout_mode = 2
 [node name="Slot36" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
 layout_mode = 2
 
-[node name="tooltipRoot" type="Node2D" parent="TextureRect"]
-visible = false
-
-[node name="tooltipBackground" type="TextureRect" parent="TextureRect/tooltipRoot"]
-z_index = 1
-offset_left = 16.0
-offset_top = -28.0
-offset_right = 136.0
-offset_bottom = -16.0
-mouse_filter = 2
-texture = SubResource("PlaceholderTexture2D_yodlc")
-
-[node name="tooltip" type="RichTextLabel" parent="TextureRect/tooltipRoot/tooltipBackground"]
-layout_mode = 0
-offset_right = 120.0
-offset_bottom = 12.0
-mouse_filter = 2
-theme = SubResource("Theme_tlt70")
-text = "Kimchi"
+[node name="tooltipRoot" parent="TextureRect" instance=ExtResource("3_cdjan")]

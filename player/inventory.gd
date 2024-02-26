@@ -5,11 +5,8 @@ extends Node
 
 # let's gooooo i'm fixing it now
 
-#const SlotClass = preload("res://slot.gd")
-
 @onready var inventorySlots = $TextureRect/GridContainer
-@onready var tooltipRoot = $TextureRect/tooltipRoot
-@onready var tooltip:RichTextLabel = $TextureRect/tooltipRoot/tooltipBackground/tooltip
+@onready var tooltipRoot:Tooltip = $TextureRect/tooltipRoot
 var holdingItem:Item = null
 var itemClass = preload("res://item.tscn")
 var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for split items evenly
@@ -19,7 +16,6 @@ var focusedSlot:Slot
 var hoveredSlots:Array = []
 var slotsAreActive:bool
 
-var tooltipActive:bool
 var lastHoveredSlotForTooltip #for comparison
 
 var distributedItemsNumber:int
@@ -240,15 +236,12 @@ func distributeSingleItems(slot:Slot): # right click drag items
 
 
 func showTooltip(slot:Slot):
-	if !tooltipActive:
+	if !tooltipRoot.tooltipActive:
 		slot.connect("mouseExitedForTooltip", Callable(self, "hideTooltip"))
-		tooltipActive = true
-		tooltipRoot.visible = true
-		tooltip.text = slot.item.itemType
+		tooltipRoot.showTooltip(slot.item.itemType)
 		lastHoveredSlotForTooltip = slot
 
 func hideTooltip(slot:Slot):
-	if tooltipActive:
+	if tooltipRoot.tooltipActive:
 		slot.disconnect("mouseExitedForTooltip", Callable(self, "hideTooltip"))
-		tooltipActive = false
-		tooltipRoot.visible = false
+		tooltipRoot.hideTooltip()
