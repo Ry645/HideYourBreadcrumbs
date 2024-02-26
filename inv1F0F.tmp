@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqpgpcfk3m74d"]
+
+[ext_resource type="Script" path="res://player/inventory.gd" id="1_srshc"]
+[ext_resource type="PackedScene" uid="uid://cs8ljt4vij8lx" path="res://slot.tscn" id="2_ex7wt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cjx3m"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yodlc"]
+
+[sub_resource type="Theme" id="Theme_tlt70"]
+default_font_size = 8
+
+[node name="inventory" type="Node"]
+script = ExtResource("1_srshc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 303.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+texture = SubResource("CanvasTexture_cjx3m")
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 284.0
+columns = 9
+
+[node name="Slot" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot2" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot3" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot4" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot5" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot6" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot7" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot8" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot9" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot10" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot11" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot12" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot13" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot14" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot15" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot16" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot17" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot18" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot19" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot20" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot21" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot22" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot23" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot24" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot25" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot26" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot27" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot28" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot29" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot30" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot31" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot32" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot33" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot34" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot35" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="Slot36" parent="TextureRect/GridContainer" instance=ExtResource("2_ex7wt")]
+layout_mode = 2
+
+[node name="tooltipRoot" type="Node2D" parent="TextureRect"]
+
+[node name="tooltipBackground" type="TextureRect" parent="TextureRect/tooltipRoot"]
+z_index = 1
+offset_left = 16.0
+offset_top = -28.0
+offset_right = 136.0
+offset_bottom = -16.0
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_yodlc")
+
+[node name="tooltip" type="RichTextLabel" parent="TextureRect/tooltipRoot/tooltipBackground"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 12.0
+mouse_filter = 2
+theme = SubResource("Theme_tlt70")
+text = "Kimchi"
