@@ -25,34 +25,23 @@ signal setSlotAct(can)
 signal resetSlots()
 
 func _process(_delta):
-	if awaitingLeftClickReleaseForPlace || awaitingRightClickReleaseForPlace:
+	if awaitingLeftClickReleaseForPlace || awaitingRightClickReleaseForPlace: #when dragging items
 		if !slotsAreActive:
 			slotsAreActive = true
 			emit_signal("setSlotAct", true)
 	else:
 		if slotsAreActive:
-			slotsAreActive = false
-			hoveredSlots = []
-			distributedFirstItem = false
-			distributedItemsNumber = 0
 			emit_signal("resetSlots")
 			emit_signal("setSlotAct", false)
 			if holdingItem:
 				holdingItem.update()
 	
-	if focusedSlot && !focusedSlot.mouseInSlot:
+	if focusedSlot && !focusedSlot.mouseInSlot: # check if mouse outside focused slot to hide tooltip
 		hideTooltip(lastHoveredSlotForTooltip)
 
 func _ready():
-	for slot in inventorySlots.get_children():
-		slot.connect("gui_input_new", Callable(self, "slotGuiInput")) # attaching signals
-		self.connect("setSlotAct", Callable(slot, "setCanSignalMouseHover"))
-		slot.connect("mouseIsHovering", Callable(self, "addToHoveredSlots"))
-		slot.connect("mouseIsHovering", Callable(self, "distributeItems"))
-		slot.connect("mouseIsHovering", Callable(self, "distributeSingleItems"))
-		self.connect("resetSlots", Callable(slot, "reset"))
-		#slot.connect("mouseIsHoveringForTooltip", Callable(self, "showTooltip"))
-	
+	self.connect("resetSlots", Callable(self, "reset"))
+	connectSlotSignals()
 	addTestItems()
 
 func slotGuiInput(event, slot):
@@ -75,7 +64,7 @@ func slotGuiInput(event, slot):
 		#mouse holding item
 		#occupied slot
 		#not the same two items
-		if event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType: #swap items
+		if event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType && !awaitingRightClickReleaseForPlace: #swap items
 			awaitingLeftClickReleaseForPlace = true
 			if event.is_released() && awaitingLeftClickReleaseForPlace:
 				if hoveredSlots.size() <= 1:
@@ -90,7 +79,7 @@ func slotGuiInput(event, slot):
 		#left click
 		#pressed click
 		#mouse holding item
-		elif event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null: # add to item number
+		elif event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && !awaitingRightClickReleaseForPlace: # add to item number
 			awaitingLeftClickReleaseForPlace = true
 			if event.is_released() && awaitingLeftClickReleaseForPlace:
 				awaitingLeftClickReleaseForPlace = false
@@ -99,7 +88,7 @@ func slotGuiInput(event, slot):
 		#pressed click
 		#mouse not holding item
 		#occupied slot
-		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem == null && slot.item != null: #take item from slot
+		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem == null && slot.item != null && !awaitingRightClickReleaseForPlace: #take item from slot
 			holdingItem = slot.item
 			slot.pickFromSlot()
 			holdingItem.global_position = event.global_position
@@ -110,7 +99,7 @@ func slotGuiInput(event, slot):
 		
 		#right click
 		#mouse holding item
-		if event.button_index == MOUSE_BUTTON_RIGHT && holdingItem != null: #place one into empty slot
+		elif event.button_index == MOUSE_BUTTON_RIGHT && holdingItem != null && !awaitingLeftClickReleaseForPlace: #place one into empty slot
 			awaitingRightClickReleaseForPlace = true
 			if event.is_released() && awaitingRightClickReleaseForPlace:
 				awaitingRightClickReleaseForPlace = false
@@ -119,7 +108,7 @@ func slotGuiInput(event, slot):
 		#pressed click
 		#mouse not holding item
 		#occupied slot
-		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem == null && slot.item != null: # take half
+		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem == null && slot.item != null && !awaitingLeftClickReleaseForPlace: # take half
 			print("half")
 			holdingItem = slot.pickHalfFromSlot()
 			holdingItem.global_position = event.global_position
@@ -129,7 +118,7 @@ func slotGuiInput(event, slot):
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion: # move item and tooltip
 		if holdingItem != null:
 			holdingItem.global_position = event.global_position
 		tooltipRoot.global_position = event.global_position
@@ -245,3 +234,21 @@ func hideTooltip(slot:Slot):
 	if tooltipRoot.tooltipActive:
 		slot.disconnect("mouseExitedForTooltip", Callable(self, "hideTooltip"))
 		tooltipRoot.hideTooltip()
+
+
+
+func connectSlotSignals():
+	for slot in inventorySlots.get_children():
+		slot.connect("gui_input_new", Callable(self, "slotGuiInput")) # attaching signals
+		self.connect("setSlotAct", Callable(slot, "setCanSignalMouseHover"))
+		slot.connect("mouseIsHovering", Callable(self, "addToHoveredSlots"))
+		slot.connect("mouseIsHovering", Callable(self, "distributeItems"))
+		slot.connect("mouseIsHovering", Callable(self, "distributeSingleItems"))
+		self.connect("resetSlots", Callable(slot, "reset"))
+		#slot.connect("mouseIsHoveringForTooltip", Callable(self, "showTooltip"))
+
+func reset(): # reset drag state
+	slotsAreActive = false
+	hoveredSlots = []
+	distributedFirstItem = false
+	distributedItemsNumber = 0
