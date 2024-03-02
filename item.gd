@@ -9,7 +9,7 @@ extends Node2D
 # and if you go to the inventory.gd with this symbol ****************/
 #class_name Item
 
-# buuuuuuuuut it's still very useful for specifying types so intellisense works in my favor
+# buuuuuuuuut it's still very useful for specifying types to make intellisense work in my favor
 class_name Item
 
 @onready var label = $RichTextLabel
@@ -18,6 +18,8 @@ var itemType:StringName = "null"
 var image:CompressedTexture2D = null
 var number:int = 1
 
+signal itemUpdated
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	updateLabel()
@@ -25,6 +27,11 @@ func _ready():
 func updateLabel():
 	label.text = StringName(str(number))
 	rect.texture = image
+	
+	if number <= 0:
+		visible = false
+	else:
+		visible = true
 
 func updateExistence():
 	if number <= 0:
@@ -33,6 +40,7 @@ func updateExistence():
 func update():
 	updateExistence()
 	updateLabel()
+	emit_signal("itemUpdated")
 	#print(self)
 
 func setVars(itemType1:StringName, image1:CompressedTexture2D, number1:int = 1):

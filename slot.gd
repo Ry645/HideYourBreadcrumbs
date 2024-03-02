@@ -16,6 +16,9 @@ var sentHoverMessageForTooltip:bool = false
 signal mouseIsHoveringForTooltip(slot)
 signal mouseExitedForTooltip(slot)
 
+signal updated(slot)
+signal childDisconnected()
+
 signal gui_input_new(event, slot)
 
 # RESOLVED
@@ -32,8 +35,9 @@ func _process(_delta):
 
 # all of this reparenting of item needed to make it hover over mouse cursor when picked up
 func pickFromSlot():
-	remove_child(item)
+	disconnectChild(item)
 	inventoryParentNode.add_child(item)
+	item.update()
 	item = null
 
 func putIntoSlot(newItem):
@@ -41,12 +45,13 @@ func putIntoSlot(newItem):
 	item.position = Vector2(0,0)
 	if inventoryParentNode.is_ancestor_of(item):
 		inventoryParentNode.remove_child(item)
-	add_child(item)
+	connectChild(item)
+	item.update()
 
 func addIntoSlot(newItem):
 	item = newItem
 	item.position = Vector2(0,0)
-	add_child(item)
+	connectChild(item)
 
 func addItemNumber(newItem):
 	item.number += newItem.number
@@ -66,7 +71,7 @@ func putOneIntoSlot(newItem):
 func createOneIntoSlot(newItem:Item):
 	item = itemClass.instantiate()
 	item.setVarsFromItem(newItem)
-	add_child(item)
+	connectChild(item)
 	newItem.number -= 1
 	item.update()
 	newItem.update()
@@ -85,17 +90,28 @@ func pickHalfFromSlot():
 func _on_gui_input(event):
 	emit_signal("gui_input_new", event, self)
 
-
 func _on_mouse_entered():
 	mouseInSlot = true
 
-
 func _on_mouse_exited():
 	mouseInSlot = false
-
 
 func setCanSignalMouseHover(can:bool):
 	canSignalMouseHover = can
 
 func reset():
 	sentHoverMessage = false
+
+
+
+func connectChild(item):
+	add_child(item)
+	item.connect("itemUpdated", Callable(self, "onItemUpdate"))
+
+func disconnectChild(item):
+	emit_signal("childDisconnected")
+	remove_child(item)
+	item.disconnect("itemUpdated", Callable(self, "onItemUpdate"))
+
+func onItemUpdate():
+	emit_signal("updated", self)

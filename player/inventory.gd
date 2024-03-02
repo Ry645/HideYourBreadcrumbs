@@ -1,5 +1,7 @@
 extends Node
 
+class_name Inventory
+
 # dear god fuck i hope this shitty spaghetti code doesn't come back to penetrate my ass later
 # FIX
 
@@ -209,7 +211,7 @@ func distributeItems(slot:Slot): #left click drag items
 
 func distributeSingleItems(slot:Slot): # right click drag items
 	if awaitingRightClickReleaseForPlace:
-		if holdingItem.number <= 0:
+		if holdingItem && holdingItem.number <= 0:
 			return
 		
 		if slot.item && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item

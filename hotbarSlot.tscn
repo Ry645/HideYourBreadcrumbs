@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://celoe5qu8a1dt"]
+
+[ext_resource type="Script" path="res://hotbarSlot.gd" id="1_7cub4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k5agv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e50o5"]
+texture = SubResource("PlaceholderTexture2D_k5agv")
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+theme_override_styles/panel = SubResource("StyleBoxTexture_e50o5")
+script = ExtResource("1_7cub4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 73.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+expand_mode = 4
+stretch_mode = 6
