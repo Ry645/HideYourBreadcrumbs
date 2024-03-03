@@ -65,6 +65,10 @@ func _physics_process(delta):
 		emit_signal("grabItem", self) #to pickup ray
 	
 	if Input.is_action_just_pressed("openInventory"):
+		if $inventory/TextureRect.visible:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		$inventory.setVisibility(!$inventory/TextureRect.visible)
 	
 	if Input.is_action_just_pressed("sprint"):

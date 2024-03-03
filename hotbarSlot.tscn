@@ -14,6 +14,7 @@ script = ExtResource("1_7cub4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 1
+layout_mode = 0
 offset_top = 40.0
 offset_right = 40.0
 offset_bottom = 73.0
@@ -21,6 +22,7 @@ mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = 1
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2

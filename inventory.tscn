@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqpgpcfk3m74d"]
+[gd_scene load_steps=6 format=3 uid="uid://bqpgpcfk3m74d"]
 
 [ext_resource type="Script" path="res://player/inventory.gd" id="1_srshc"]
 [ext_resource type="PackedScene" uid="uid://cs8ljt4vij8lx" path="res://slot.tscn" id="2_ex7wt"]
 [ext_resource type="PackedScene" uid="uid://bmyh64m2shslu" path="res://tooltip.tscn" id="3_cdjan"]
-[ext_resource type="PackedScene" uid="uid://7gfblk66tppv" path="res://hotbarLogic.tscn" id="4_gsx8k"]
 [ext_resource type="PackedScene" uid="uid://d4jj1eyu27v1u" path="res://hotbar.tscn" id="5_yggy6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cjx3m"]
@@ -137,7 +136,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="tooltipRoot" parent="TextureRect" instance=ExtResource("3_cdjan")]
-
-[node name="hotbarLogic" parent="." instance=ExtResource("4_gsx8k")]
 
 [node name="hotbar" parent="." instance=ExtResource("5_yggy6")]

@@ -54,7 +54,7 @@ func slotGuiInput(event, slot):
 	
 	focusedSlot = slot
 	
-	if slot.item:
+	if slot.item != null:
 		showTooltip(slot)
 	if slot != lastHoveredSlotForTooltip:
 		hideTooltip(lastHoveredSlotForTooltip)
@@ -111,7 +111,7 @@ func slotGuiInput(event, slot):
 		#mouse not holding item
 		#occupied slot
 		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem == null && slot.item != null && !awaitingLeftClickReleaseForPlace: # take half
-			print("half")
+			#print("half")
 			holdingItem = slot.pickHalfFromSlot()
 			holdingItem.global_position = event.global_position
 
@@ -162,7 +162,7 @@ func addTestItems():
 		addItemToInventory(itemObj)
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars("kimchi", load("res://jongga_kimchi.png"))
+		itemObj.setVars("Kimchi", load("res://jongga_kimchi.png"))
 		addItemToInventory(itemObj)
 		pass
 
@@ -182,15 +182,20 @@ func distributeItems(slot:Slot): #left click drag items
 		if !distributedFirstItem:
 			distributedItemsNumber = holdingItem.number
 		
-		if int(distributedItemsNumber/hoveredSlots.size()) <= 0:
+		@warning_ignore("integer_division")
+		var temp = int(distributedItemsNumber/hoveredSlots.size())
+		if temp <= 0:
 			return
 		
-		if slot.item && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
+		#print(slot.item)
+		if slot.item != null && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
+			@warning_ignore("integer_division")
 			slot.addItemByNumber(int(distributedItemsNumber/hoveredSlots.size()))
-			
+		
 		elif !slot.item: # dragging into empty slot
 			var itemObj = itemClass.instantiate()
 			itemObj.setVars(holdingItem.itemType, holdingItem.image)
+			@warning_ignore("integer_division")
 			itemObj.number = int(distributedItemsNumber/hoveredSlots.size())
 			#print(hoveredSlots.size())
 			slot.putIntoSlot(itemObj)
@@ -200,11 +205,13 @@ func distributeItems(slot:Slot): #left click drag items
 		if distributedFirstItem: #need this to evenly distribute (ie:    5 5 5 5 = 20    ------>    4 4 4 4 4 = 20)
 			var i = 0
 			for slotObj in hoveredSlots:
+				@warning_ignore("integer_division")
 				slotObj.item.number = slotObj.item.number - int(distributedItemsNumber/(hoveredSlots.size() - 1)) + int(distributedItemsNumber/hoveredSlots.size())
 				slotObj.item.update()
 				i += 1
 				if i == hoveredSlots.size() - 1:
 					break
+		@warning_ignore("integer_division")
 		holdingItem.number = distributedItemsNumber - int(distributedItemsNumber/hoveredSlots.size()) * hoveredSlots.size()
 		holdingItem.updateLabel()
 		distributedFirstItem = true
@@ -214,9 +221,9 @@ func distributeSingleItems(slot:Slot): # right click drag items
 		if holdingItem && holdingItem.number <= 0:
 			return
 		
-		if slot.item && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
+		if slot.item != null && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
 			slot.putOneIntoSlot(holdingItem)
-		elif !slot.item: # dragging into empty slot
+		elif slot.item == null: # dragging into empty slot
 			slot.createOneIntoSlot(holdingItem)
 		else: # dragging into filled slot with not same item
 			hoveredSlots.remove_at(hoveredSlots.size() - 1)
