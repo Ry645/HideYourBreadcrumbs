@@ -8,15 +8,15 @@ z_index = 1
 script = ExtResource("1_fm7dw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_top = 40.0
+offset_top = 30.0
 offset_right = 40.0
-offset_bottom = 73.0
+offset_bottom = 63.0
 mouse_filter = 2
 text = "1"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 30.0
+offset_bottom = 30.0
 mouse_filter = 2
 texture = ExtResource("2_d6x57")
 expand_mode = 4

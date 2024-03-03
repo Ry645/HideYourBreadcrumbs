@@ -6,6 +6,8 @@ var itemClass = preload("res://item.tscn")
 var item:Item = null
 var mouseInSlot: bool
 var currentEvent
+
+@onready var itemLocationNode = $itemLocation
 @onready var inventoryParentNode = find_parent("inventory")
 
 var canSignalMouseHover:bool = false
@@ -105,12 +107,12 @@ func reset():
 
 
 func connectChild(theItem):
-	add_child(theItem)
+	itemLocationNode.add_child(theItem)
 	theItem.connect("itemUpdated", Callable(self, "onItemUpdate"))
 
 func disconnectChild(theItem):
 	emit_signal("childDisconnected")
-	remove_child(theItem)
+	itemLocationNode.remove_child(theItem)
 	theItem.disconnect("itemUpdated", Callable(self, "onItemUpdate"))
 
 func onItemUpdate():
