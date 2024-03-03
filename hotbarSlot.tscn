@@ -1,30 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://celoe5qu8a1dt"]
+[gd_scene load_steps=3 format=3 uid="uid://celoe5qu8a1dt"]
 
 [ext_resource type="Script" path="res://hotbarSlot.gd" id="1_7cub4"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k5agv"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e50o5"]
-texture = SubResource("PlaceholderTexture2D_k5agv")
+[ext_resource type="Theme" uid="uid://dxajxgr6yuec0" path="res://hotbarSlot.tres" id="1_c5hxl"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(64, 64)
-theme_override_styles/panel = SubResource("StyleBoxTexture_e50o5")
+theme = ExtResource("1_c5hxl")
 script = ExtResource("1_7cub4")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="itemLocation" type="Node2D" parent="."]
+position = Vector2(5, 5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="itemLocation"]
 z_index = 1
-layout_mode = 0
-offset_top = 40.0
+offset_top = 30.0
 offset_right = 40.0
-offset_bottom = 73.0
+offset_bottom = 63.0
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="itemLocation"]
 z_index = 1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 30.0
+offset_bottom = 30.0
 mouse_filter = 2
 expand_mode = 4
 stretch_mode = 6

@@ -76,6 +76,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_released("sprint"):
 		SPEED /= 5.0
+	
+	if Input.is_action_just_pressed("hotbarNext"):
+		$hotbar.navigateAdd(1)
+	
+	if Input.is_action_just_pressed("hotbarPrevious"):
+		$hotbar.navigateAdd(-1)
 
 
 func _on_collider_item_confirmed(item):

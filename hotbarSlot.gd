@@ -1,16 +1,18 @@
 extends Panel
 
-
 var itemClass = preload("res://item.tscn")
 var slotRef:Slot = null
 
+@onready var textLabel = $itemLocation/RichTextLabel
+@onready var rect = $itemLocation/TextureRect
+
 func updateSelf(slot):
 	slotRef = slot
-	$TextureRect.texture = slotRef.item.image
-	$RichTextLabel.text = str(slotRef.item.number)
+	textLabel.text = str(slotRef.item.number)
+	rect.texture = slotRef.item.image
 	if slotRef.item.number <= 0:
 		hideLabel()
 
 func hideLabel():
-	$RichTextLabel.text = ""
-	$TextureRect.texture = null
+	textLabel.text = ""
+	rect.texture = null
