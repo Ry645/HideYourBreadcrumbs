@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
-[ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi_jar_item.tscn" id="4_jadoj"]
+[ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi/kimchi_jar_item.tscn" id="4_jadoj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

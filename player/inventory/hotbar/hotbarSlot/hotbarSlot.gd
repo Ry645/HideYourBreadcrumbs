@@ -1,6 +1,6 @@
 extends Panel
 
-var itemClass = preload("res://item.tscn")
+@export var itemClass:Resource
 var slotRef:Slot = null
 
 @onready var textLabel = $itemLocation/RichTextLabel

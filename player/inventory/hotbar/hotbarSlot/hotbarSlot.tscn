@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://celoe5qu8a1dt"]
+
+[ext_resource type="Theme" uid="uid://dxajxgr6yuec0" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.tres" id="1_h768d"]
+[ext_resource type="Script" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.gd" id="2_brbul"]
+[ext_resource type="PackedScene" uid="uid://u01q4h3q3nq4" path="res://player/inventory/item/item.tscn" id="3_dol4g"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+theme = ExtResource("1_h768d")
+script = ExtResource("2_brbul")
+itemClass = ExtResource("3_dol4g")
+
+[node name="itemLocation" type="Node2D" parent="."]
+position = Vector2(5, 5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="itemLocation"]
+z_index = 1
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 63.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="itemLocation"]
+z_index = 1
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+expand_mode = 4
+stretch_mode = 6

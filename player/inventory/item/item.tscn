@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://u01q4h3q3nq4"]
 
-[ext_resource type="Script" path="res://item.gd" id="1_fm7dw"]
-[ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://jongga_kimchi.png" id="2_d6x57"]
+[ext_resource type="Script" path="res://player/inventory/item/item.gd" id="1_a1amq"]
+[ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://kimchi/jongga_kimchi.png" id="2_276fr"]
 
 [node name="item" type="Node2D"]
 z_index = 1
-script = ExtResource("1_fm7dw")
+script = ExtResource("1_a1amq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_top = 30.0
@@ -18,6 +18,6 @@ text = "1"
 offset_right = 30.0
 offset_bottom = 30.0
 mouse_filter = 2
-texture = ExtResource("2_d6x57")
+texture = ExtResource("2_276fr")
 expand_mode = 4
 stretch_mode = 6

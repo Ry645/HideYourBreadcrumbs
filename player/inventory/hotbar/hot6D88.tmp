@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4jj1eyu27v1u"]
+
+[ext_resource type="Script" path="res://player/inventory/hotbar/hotbar.gd" id="1_w3s7m"]
+[ext_resource type="PackedScene" uid="uid://u01q4h3q3nq4" path="res://player/inventory/item/item.tscn" id="2_5m481"]
+[ext_resource type="PackedScene" uid="uid://celoe5qu8a1dt" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.tscn" id="2_n2r1c"]
+
+[node name="hotbar" type="Node2D"]
+script = ExtResource("1_w3s7m")
+itemClass = ExtResource("2_5m481")
+
+[node name="hotbarContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(8, 8)
+offset_left = 267.0
+offset_top = 554.0
+offset_right = 875.0
+offset_bottom = 618.0
+columns = 9
+metadata/_edit_group_ = true
+
+[node name="hotbarSlot" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot2" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot3" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot4" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot5" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot6" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot7" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot8" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2
+
+[node name="hotbarSlot9" parent="hotbarContainer" instance=ExtResource("2_n2r1c")]
+layout_mode = 2

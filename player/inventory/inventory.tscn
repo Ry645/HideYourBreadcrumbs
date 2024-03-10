@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqpgpcfk3m74d"]
+
+[ext_resource type="Script" path="res://player/inventory/inventory.gd" id="1_07m3y"]
+[ext_resource type="PackedScene" uid="uid://u01q4h3q3nq4" path="res://player/inventory/item/item.tscn" id="2_ch1w0"]
+[ext_resource type="Theme" uid="uid://dxajxgr6yuec0" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.tres" id="3_e3y2e"]
+[ext_resource type="StyleBox" uid="uid://bplh81lng7eau" path="res://player/inventory/inventoryBackground.tres" id="4_ib3bt"]
+[ext_resource type="PackedScene" uid="uid://cs8ljt4vij8lx" path="res://player/inventory/slot/slot.tscn" id="5_b8oxm"]
+[ext_resource type="PackedScene" uid="uid://bmyh64m2shslu" path="res://player/inventory/tooltip/tooltip.tscn" id="6_la5sj"]
+
+[node name="inventory" type="Node"]
+script = ExtResource("1_07m3y")
+itemClass = ExtResource("2_ch1w0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 640.0
+offset_bottom = 303.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+theme = ExtResource("3_e3y2e")
+
+[node name="background" type="Panel" parent="TextureRect"]
+z_index = -1
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 303.0
+theme = ExtResource("3_e3y2e")
+theme_override_styles/panel = ExtResource("4_ib3bt")
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 624.0
+offset_bottom = 284.0
+columns = 9
+
+[node name="Slot" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot2" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot3" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot4" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot5" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot6" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot7" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot8" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot9" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot10" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot11" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot12" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot13" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot14" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot15" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot16" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot17" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot18" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot19" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot20" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot21" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot22" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot23" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot24" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot25" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot26" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot27" parent="TextureRect/GridContainer" instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot28" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot29" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot30" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot31" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot32" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot33" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot34" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot35" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="Slot36" parent="TextureRect/GridContainer" groups=["hotbarInventorySlots"] instance=ExtResource("5_b8oxm")]
+layout_mode = 2
+
+[node name="tooltipRoot" parent="TextureRect" instance=ExtResource("6_la5sj")]

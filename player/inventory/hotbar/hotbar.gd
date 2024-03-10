@@ -2,9 +2,9 @@ extends Node2D
 
 
 #@onready var inventory:Inventory = get_node("inventory")
-var itemClass = preload("res://item.tscn")
+@export var itemClass: Resource
 
-var selectedStyle = preload("res://selectedHotbarPanel.tres")
+@export var selectedStyle: Resource
 
 @onready var hotbarInvSlots = get_parent().get_tree().get_nodes_in_group("hotbarInventorySlots")
 @onready var hotbarSlots = $hotbarContainer.get_children()

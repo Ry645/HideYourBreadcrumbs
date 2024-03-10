@@ -10,7 +10,7 @@ class_name Inventory
 @onready var inventorySlots = $TextureRect/GridContainer
 @onready var tooltipRoot:Tooltip = $TextureRect/tooltipRoot
 var holdingItem:Item = null
-var itemClass = preload("res://item.tscn")
+@export var itemClass:Resource
 var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for split items evenly
 var awaitingRightClickReleaseForPlace:bool
 
@@ -162,7 +162,7 @@ func addTestItems():
 		addItemToInventory(itemObj)
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars("Kimchi", load("res://jongga_kimchi.png"))
+		itemObj.setVars("Kimchi", load("res://kimchi/jongga_kimchi.png"))
 		addItemToInventory(itemObj)
 		pass
 

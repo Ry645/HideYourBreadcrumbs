@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
 [ext_resource type="Texture2D" uid="uid://d05a72ajgg88t" path="res://player/crosshair.png" id="3_hbylk"]
 [ext_resource type="PackedScene" uid="uid://bqpgpcfk3m74d" path="res://player/inventory/inventory.tscn" id="4_rxufc"]
-[ext_resource type="PackedScene" uid="uid://d4jj1eyu27v1u" path="res://player/inventory/hotbar/hotbar.tscn" id="5_njuh6"]
+[ext_resource type="PackedScene" uid="uid://d4jj1eyu27v1u" path="res://player/inventory/hotbar.tscn" id="5_njuh6"]
 [ext_resource type="PackedScene" uid="uid://hukestwag7q6" path="res://buildTool.tscn" id="6_lx5ip"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t0x5e"]

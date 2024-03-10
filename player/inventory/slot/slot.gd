@@ -2,7 +2,7 @@ extends Panel
 
 class_name Slot
 
-var itemClass = preload("res://item.tscn")
+@export var itemClass:Resource
 var item:Item = null
 var mouseInSlot: bool
 var currentEvent
