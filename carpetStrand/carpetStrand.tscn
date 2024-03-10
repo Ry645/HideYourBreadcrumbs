@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wo8e8pfrqwdh"]
+[gd_scene load_steps=7 format=3 uid="uid://wo8e8pfrqwdh"]
 
 [ext_resource type="Script" path="res://carpetStrand/CarpetStrand.gd" id="1_6e4jc"]
 [ext_resource type="Script" path="res://colliderItem.gd" id="2_nqyoe"]
 [ext_resource type="Texture2D" uid="uid://bjp0r1pf3bt15" path="res://carpetStrand/carpetStrandImage.png" id="2_qbg7h"]
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://carpetStrand/carpetStrand.tres" id="3_8ybdg"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_jc36l"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -13,7 +14,7 @@ data = PackedVector3Array(0, 0.125, 0.125, 0.125, -0.125, 0.125, -0.125, -0.125,
 [node name="CarpetStrand" type="Node3D"]
 script = ExtResource("1_6e4jc")
 itemImage = ExtResource("2_qbg7h")
-metadata/itemType = "CarpetStrand"
+itemRes = ExtResource("3_8ybdg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_jc36l")

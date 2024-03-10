@@ -37,3 +37,9 @@ func positiveModFunctionIStoleFromStackOverflow(number, mod):
 func updateSlotSelection(previousSlotIndex):
 	hotbarSlots[previousSlotIndex].remove_theme_stylebox_override("panel")
 	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)
+
+
+#func _on_player_attempt_to_place_item():
+	#var itemRes:Resource = hotbarSlots[selectedSlotIndex].slotRef.item.itemRes
+	#if itemRes.isPlaceable:
+		#pass

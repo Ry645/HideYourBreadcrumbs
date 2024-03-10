@@ -53,4 +53,5 @@ metadata/_edit_use_anchors_ = true
 [node name="buildTool" parent="." instance=ExtResource("6_lx5ip")]
 
 [connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
+[connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
 [connection signal="grabItem" from="." to="neck/Camera3D/pickupRay" method="_on_player_grab_item"]

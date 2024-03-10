@@ -14,8 +14,8 @@ class_name Item
 
 @onready var label = $RichTextLabel
 @onready var rect = $TextureRect
-var itemType:StringName = "null"
-var image:CompressedTexture2D = null
+
+var itemRes:Resource
 var number:int = 1
 
 signal itemUpdated
@@ -26,7 +26,7 @@ func _ready():
 
 func updateLabel():
 	label.text = StringName(str(number))
-	rect.texture = image
+	rect.texture = itemRes.image
 	
 	if number <= 0:
 		visible = false
@@ -43,11 +43,9 @@ func update():
 	emit_signal("itemUpdated")
 	#print(self)
 
-func setVars(itemType1:StringName, image1:CompressedTexture2D, number1:int = 1):
-	itemType = itemType1
-	image = image1
+func setVars(resource:Resource, number1:int = 1):
+	itemRes = resource
 	number = number1
 
 func setVarsFromItem(item:Item):
-	itemType = item.itemType
-	image = item.image
+	itemRes = item.itemRes

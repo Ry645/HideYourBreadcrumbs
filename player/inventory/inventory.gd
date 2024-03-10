@@ -66,7 +66,7 @@ func slotGuiInput(event, slot):
 		#mouse holding item
 		#occupied slot
 		#not the same two items
-		if event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && slot.item != null && slot.item.itemType != holdingItem.itemType && !awaitingRightClickReleaseForPlace: #swap items
+		if event.button_index == MOUSE_BUTTON_LEFT && holdingItem != null && slot.item != null && slot.item.itemRes != holdingItem.itemRes && !awaitingRightClickReleaseForPlace: #swap items
 			awaitingLeftClickReleaseForPlace = true
 			if event.is_released() && awaitingLeftClickReleaseForPlace:
 				if hoveredSlots.size() <= 1:
@@ -132,7 +132,7 @@ func addItemToInventory(item):
 		if !slot.item: #slot has no item
 			slot.addIntoSlot(item)
 			break
-		elif slot.item.itemType == item.itemType:
+		elif slot.item.itemRes == item.itemRes:
 			slot.addItemNumber(item)
 			break
 
@@ -144,7 +144,7 @@ func _on_player_add_item_to_inventory(item):
 	
 	var itemObj = itemClass.instantiate()
 	#itemObj.itemType = item.get_meta("itemType") #previous set
-	itemObj.setVars(item.get_meta("itemType"), item.itemImage)
+	itemObj.setVars(item.itemRes)
 	addItemToInventory(itemObj) #this way is better and won't lead to anymore fuckups
 	print("added")
 
@@ -158,11 +158,11 @@ func setVisibility(isVisibile):
 func addTestItems():
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars("carpetStrand", load("res://carpetStrand/carpetStrandImage.png"))
+		itemObj.setVars(load("res://carpetStrand/carpetStrand.tres"))
 		addItemToInventory(itemObj)
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars("Kimchi", load("res://kimchi/jongga_kimchi.png"))
+		itemObj.setVars(load("res://kimchi/kimchi.tres"))
 		addItemToInventory(itemObj)
 		pass
 
@@ -188,13 +188,13 @@ func distributeItems(slot:Slot): #left click drag items
 			return
 		
 		#print(slot.item)
-		if slot.item != null && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
+		if slot.item != null && holdingItem.itemRes && slot.item.itemRes == holdingItem.itemRes: # dragging into slot with same item
 			@warning_ignore("integer_division")
 			slot.addItemByNumber(int(distributedItemsNumber/hoveredSlots.size()))
 		
 		elif !slot.item: # dragging into empty slot
 			var itemObj = itemClass.instantiate()
-			itemObj.setVars(holdingItem.itemType, holdingItem.image)
+			itemObj.setVars(holdingItem.itemRes)
 			@warning_ignore("integer_division")
 			itemObj.number = int(distributedItemsNumber/hoveredSlots.size())
 			#print(hoveredSlots.size())
@@ -221,7 +221,7 @@ func distributeSingleItems(slot:Slot): # right click drag items
 		if holdingItem && holdingItem.number <= 0:
 			return
 		
-		if slot.item != null && holdingItem.itemType && slot.item.itemType == holdingItem.itemType: # dragging into slot with same item
+		if slot.item != null && holdingItem.itemRes && slot.item.itemRes == holdingItem.itemRes: # dragging into slot with same item
 			slot.putOneIntoSlot(holdingItem)
 		elif slot.item == null: # dragging into empty slot
 			slot.createOneIntoSlot(holdingItem)
@@ -236,7 +236,7 @@ func distributeSingleItems(slot:Slot): # right click drag items
 func showTooltip(slot:Slot):
 	if !tooltipRoot.tooltipActive:
 		slot.connect("mouseExitedForTooltip", Callable(self, "hideTooltip"))
-		tooltipRoot.showTooltip(slot.item.itemType)
+		tooltipRoot.showTooltip(slot.item.itemRes.itemType)
 		lastHoveredSlotForTooltip = slot
 
 func hideTooltip(slot:Slot):

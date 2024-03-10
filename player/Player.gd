@@ -4,6 +4,8 @@ signal grabItem(player)
 signal disappearItem()
 signal addItemToInventory(item)
 
+signal attemptToPlaceItem
+
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 
@@ -82,6 +84,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("hotbarPrevious"):
 		$hotbar.navigateAdd(-1)
+	
+	if Input.is_action_just_pressed("placeItem"):
+		emit_signal("attemptToPlaceItem")
 
 
 func _on_collider_item_confirmed(item):
