@@ -2,7 +2,7 @@ extends Node3D
 
 class_name KimchiJar
 
-@export var itemRes:Resource
+@export var itemResPath:String
 
 var isPlaceable:bool = true
 

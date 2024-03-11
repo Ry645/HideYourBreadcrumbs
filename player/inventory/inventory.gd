@@ -144,7 +144,8 @@ func _on_player_add_item_to_inventory(item):
 	
 	var itemObj = itemClass.instantiate()
 	#itemObj.itemType = item.get_meta("itemType") #previous set
-	itemObj.setVars(item.itemRes)
+	itemObj.setVars(load(item.itemResPath))
+	#print(item.itemRes)
 	addItemToInventory(itemObj) #this way is better and won't lead to anymore fuckups
 	print("added")
 

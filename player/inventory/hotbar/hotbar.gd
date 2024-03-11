@@ -6,6 +6,8 @@ extends Node2D
 
 @export var selectedStyle: Resource
 
+signal placeItem(itemRes, mainNode)
+
 @onready var hotbarInvSlots = get_parent().get_tree().get_nodes_in_group("hotbarInventorySlots")
 @onready var hotbarSlots = $hotbarContainer.get_children()
 
@@ -13,6 +15,7 @@ var selectedSlotIndex:int = 0
 
 func _ready():
 	for i in range(hotbarInvSlots.size()):
+		hotbarSlots[i].slotRef = hotbarInvSlots[i]
 		hotbarInvSlots[i].connect("updated", Callable(hotbarSlots[i], "updateSelf"))
 		hotbarInvSlots[i].connect("childDisconnected", Callable(hotbarSlots[i], "hideLabel"))
 	
@@ -39,7 +42,10 @@ func updateSlotSelection(previousSlotIndex):
 	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)
 
 
-#func _on_player_attempt_to_place_item():
-	#var itemRes:Resource = hotbarSlots[selectedSlotIndex].slotRef.item.itemRes
-	#if itemRes.isPlaceable:
-		#pass
+func _on_player_attempt_to_place_item(mainNode):
+	if hotbarSlots[selectedSlotIndex].slotRef.item == null:
+		return
+	
+	var itemRes:Resource = hotbarSlots[selectedSlotIndex].slotRef.item.itemRes
+	if itemRes.isPlaceable:
+		emit_signal("placeItem", itemRes, mainNode)

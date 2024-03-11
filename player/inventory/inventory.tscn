@@ -13,11 +13,14 @@ itemClass = ExtResource("2_ch1w0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-offset_right = 640.0
-offset_bottom = 303.0
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 880.0
+offset_bottom = 463.0
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
 theme = ExtResource("3_e3y2e")
+metadata/_edit_group_ = true
 
 [node name="background" type="Panel" parent="TextureRect"]
 z_index = -1

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2vk4ss44tmk0"]
+
+[ext_resource type="Script" path="res://buildTool.gd" id="1_5davb"]
+
+[node name="buildTool" type="RayCast3D"]
+target_position = Vector3(0, 0, -4)
+script = ExtResource("1_5davb")
