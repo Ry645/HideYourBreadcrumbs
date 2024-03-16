@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody3D
 
 signal grabItem(player)
@@ -13,8 +15,16 @@ signal attemptToPlaceItem(mainNode)
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #  :=  symbol means I KNOW WHAT TYPE THIS VAR IS instead of eh its whatever
-@onready var neck := $neck
-@onready var camera := $neck/Camera3D
+@onready var neck := %neck
+@onready var camera := %Camera3D
+@onready var inventory:Inventory = %inventory
+@onready var hotbar:Hotbar = %hotbar
+
+var main
+
+func _ready():
+	hotbar.player = self
+	hotbar._initializeVarsOnReady()
 
 func _unhandled_input(event):
 	# if not tabbed out (ie playing game)
@@ -67,11 +77,11 @@ func _physics_process(delta):
 		emit_signal("grabItem", self) #to pickup ray
 	
 	if Input.is_action_just_pressed("openInventory"):
-		if $inventory/TextureRect.visible:
+		if inventory.am_i_visible():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		$inventory.setVisibility(!$inventory/TextureRect.visible)
+		inventory.setVisibility(!inventory.am_i_visible())
 	
 	if Input.is_action_just_pressed("sprint"):
 		SPEED *= 5.0
@@ -80,13 +90,13 @@ func _physics_process(delta):
 		SPEED /= 5.0
 	
 	if Input.is_action_just_pressed("hotbarNext"):
-		$hotbar.navigateAdd(1)
+		hotbar.navigateAdd(1)
 	
 	if Input.is_action_just_pressed("hotbarPrevious"):
-		$hotbar.navigateAdd(-1)
+		hotbar.navigateAdd(-1)
 	
 	if Input.is_action_just_pressed("placeItem"):
-		emit_signal("attemptToPlaceItem", get_parent())
+		emit_signal("attemptToPlaceItem", main)
 
 
 func _on_collider_item_confirmed(item):

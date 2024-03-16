@@ -12,6 +12,7 @@ script = ExtResource("1_07m3y")
 itemClass = ExtResource("2_ch1w0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
 visible = false
 offset_left = 240.0
 offset_top = 160.0
@@ -31,6 +32,7 @@ theme = ExtResource("3_e3y2e")
 theme_override_styles/panel = ExtResource("4_ib3bt")
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 0
 offset_left = 16.0
@@ -148,3 +150,4 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="tooltipRoot" parent="TextureRect" instance=ExtResource("6_la5sj")]
+unique_name_in_owner = true

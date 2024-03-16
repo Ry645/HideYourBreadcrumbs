@@ -7,8 +7,10 @@ class_name Inventory
 
 # let's gooooo i'm fixing it now
 
-@onready var inventorySlots = $TextureRect/GridContainer
-@onready var tooltipRoot:Tooltip = $TextureRect/tooltipRoot
+@onready var inventorySlots = %GridContainer
+@onready var tooltipRoot:Tooltip = %tooltipRoot
+@onready var texture_rect = %TextureRect
+
 var holdingItem:Item = null
 @export var itemClass:Resource
 var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for split items evenly
@@ -48,6 +50,8 @@ func _ready():
 
 func slotGuiInput(event, slot):
 	#yes, I know that if I left click and right click on a single item at the same time, it deletes the item.
+	#no, I don't care.
+	#also, I know that if the player exits the inventory while holding an item the thing stays there floating on the cursor.
 	#no, I don't care.
 	#but anyways,
 	# FIX
@@ -137,14 +141,14 @@ func addItemToInventory(item):
 			break
 
 
-func _on_player_add_item_to_inventory(item):
+func _on_player_add_item_to_inventory(item:PickupRoot):
 	#SceneTree
 	#addItemToInventory(Item.new(item.get_groups()[0])) #when you make this instance of a class, you're using the script, not the scene blueprint
 	# that's why it doesn't work like the rest of the item nodes   ****************/
 	
 	var itemObj = itemClass.instantiate()
 	#itemObj.itemType = item.get_meta("itemType") #previous set
-	itemObj.setVars(load(item.itemResPath))
+	itemObj.setVars(item.itemRes)
 	#print(item.itemRes)
 	addItemToInventory(itemObj) #this way is better and won't lead to anymore fuckups
 	print("added")
@@ -153,7 +157,7 @@ func _on_player_add_item_to_inventory(item):
 
 func setVisibility(isVisibile):
 	#ok so that's how it works
-	$TextureRect.visible = isVisibile
+	texture_rect.visible = isVisibile
 
 
 func addTestItems():
@@ -262,3 +266,7 @@ func reset(): # reset drag state
 	hoveredSlots = []
 	distributedFirstItem = false
 	distributedItemsNumber = 0
+
+
+func am_i_visible() -> bool:
+	return texture_rect.visible

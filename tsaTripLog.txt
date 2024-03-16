@@ -1,0 +1,9 @@
+1: Added get unique name capability
+next add pickup node parent to each item so i can store the resource as a file instead of a path
+
+2: got rid of get_parent.get_parent atrocity and used references injected by the parent at ready function insteaed
+make sure to have root to leaf control flow so i don't have to get_parent.get_parent.get_parent.get_parent.get_parent.get_parent
+and instead just say %tooltip.setVars()
+
+3: added in text file logs to track progress easier and write down important notes
+At the end of the day, I'm still learning, and I always will be.

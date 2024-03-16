@@ -1,0 +1,11 @@
+INFO
+for moving up trees from leaf to root, you can set up signals in the leaves and connect them in the root's scene tree editor
+
+DO NOT WORRY ABOUT ABSTRACTION
+it's generally not worth it since you'll forget how to set up the abstraction anyways
+just stick with hard-coded values, and abstract it when the time comes
+
+
+TODO
+fix up pickup ray detection (colliderItem.gd, pickup node)
+

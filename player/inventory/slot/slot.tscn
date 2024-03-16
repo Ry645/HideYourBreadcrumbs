@@ -11,6 +11,7 @@ script = ExtResource("2_oo7ql")
 itemClass = ExtResource("3_buvwi")
 
 [node name="itemLocation" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(5, 5)
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

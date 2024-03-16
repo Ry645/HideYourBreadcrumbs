@@ -20,6 +20,7 @@ mouse_filter = 2
 theme = ExtResource("2_eyu3w")
 
 [node name="tooltip" type="RichTextLabel" parent="tooltipBackground"]
+unique_name_in_owner = true
 z_index = 2
 layout_mode = 0
 offset_right = 120.0

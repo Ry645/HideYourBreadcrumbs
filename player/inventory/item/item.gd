@@ -12,8 +12,8 @@ extends Node2D
 # buuuuuuuuut it's still very useful for specifying types to make intellisense work in my favor
 class_name Item
 
-@onready var label = $RichTextLabel
-@onready var rect = $TextureRect
+@onready var label = %RichTextLabel
+@onready var rect = %TextureRect
 
 var itemRes:Resource
 var number:int = 1

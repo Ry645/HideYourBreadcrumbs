@@ -14,6 +14,7 @@ itemClass = ExtResource("3_dol4g")
 position = Vector2(5, 5)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="itemLocation"]
+unique_name_in_owner = true
 z_index = 1
 offset_top = 30.0
 offset_right = 40.0
@@ -21,6 +22,7 @@ offset_bottom = 63.0
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="itemLocation"]
+unique_name_in_owner = true
 z_index = 1
 offset_right = 30.0
 offset_bottom = 30.0

@@ -11,6 +11,7 @@ itemClass = ExtResource("2_5m481")
 selectedStyle = ExtResource("3_fjqic")
 
 [node name="hotbarContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 8)
 offset_left = 267.0
 offset_top = 554.0

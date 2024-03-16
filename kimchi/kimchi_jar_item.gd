@@ -2,10 +2,8 @@ extends Node3D
 
 class_name KimchiJar
 
-@export var itemResPath:String
+var pickupRoot
+@onready var static_body_3d = %StaticBody3D
 
-var isPlaceable:bool = true
-
-func _on_player_disappear_item():
-	queue_free()
-	#print("poot")
+func _ready():
+	static_body_3d.itemRoot = self

@@ -1,3 +1,5 @@
+class_name Hotbar
+
 extends Node2D
 
 
@@ -8,18 +10,11 @@ extends Node2D
 
 signal placeItem(itemRes, mainNode)
 
-@onready var hotbarInvSlots = get_parent().get_tree().get_nodes_in_group("hotbarInventorySlots")
-@onready var hotbarSlots = $hotbarContainer.get_children()
+@onready var player:Player
+@onready var hotbarInvSlots
+@onready var hotbarSlots = %hotbarContainer.get_children()
 
 var selectedSlotIndex:int = 0
-
-func _ready():
-	for i in range(hotbarInvSlots.size()):
-		hotbarSlots[i].slotRef = hotbarInvSlots[i]
-		hotbarInvSlots[i].connect("updated", Callable(hotbarSlots[i], "updateSelf"))
-		hotbarInvSlots[i].connect("childDisconnected", Callable(hotbarSlots[i], "hideLabel"))
-	
-	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)
 
 func navigateAdd(number):
 	var previous = selectedSlotIndex
@@ -49,3 +44,13 @@ func _on_player_attempt_to_place_item(mainNode):
 	var itemRes:Resource = hotbarSlots[selectedSlotIndex].slotRef.item.itemRes
 	if itemRes.isPlaceable:
 		emit_signal("placeItem", itemRes, mainNode)
+
+func _initializeVarsOnReady(): #called by onready from player
+	hotbarInvSlots = player.get_tree().get_nodes_in_group("hotbarInventorySlots")
+	
+	for i in range(hotbarInvSlots.size()):
+		hotbarSlots[i].slotRef = hotbarInvSlots[i]
+		hotbarInvSlots[i].connect("updated", Callable(hotbarSlots[i], "updateSelf"))
+		hotbarInvSlots[i].connect("childDisconnected", Callable(hotbarSlots[i], "hideLabel"))
+	
+	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)

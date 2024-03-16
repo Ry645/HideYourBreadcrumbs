@@ -7,7 +7,7 @@ var item:Item = null
 var mouseInSlot: bool
 var currentEvent
 
-@onready var itemLocationNode = $itemLocation
+@onready var itemLocationNode = %itemLocation
 @onready var inventoryParentNode = find_parent("inventory")
 
 var canSignalMouseHover:bool = false

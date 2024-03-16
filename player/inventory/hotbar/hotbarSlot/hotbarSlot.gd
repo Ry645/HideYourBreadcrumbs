@@ -3,8 +3,8 @@ extends Panel
 @export var itemClass:Resource
 var slotRef:Slot = null
 
-@onready var textLabel = $itemLocation/RichTextLabel
-@onready var rect = $itemLocation/TextureRect
+@onready var textLabel = %RichTextLabel
+@onready var rect = %TextureRect
 
 func updateSelf(slot):
 	slotRef = slot
