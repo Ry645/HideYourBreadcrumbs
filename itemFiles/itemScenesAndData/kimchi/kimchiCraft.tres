@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="CraftResource" load_steps=3 format=3 uid="uid://3akdum6l0b63"]
+[gd_resource type="Resource" script_class="CraftResource" load_steps=3 format=3 uid="uid://cbxbw4ega175m"]
 
 [ext_resource type="Resource" uid="uid://cq5pt8oto2ch3" path="res://itemFiles/itemScenesAndData/kimchi/kimchi.tres" id="2_8tr46"]
-[ext_resource type="Script" path="res://craftResource.gd" id="3_ps8o6"]
+[ext_resource type="Script" path="res://itemFiles/craftScripts/craftResource.gd" id="3_sq1ys"]
 
 [resource]
-script = ExtResource("3_ps8o6")
+script = ExtResource("3_sq1ys")
 baseItem = ExtResource("2_8tr46")
-craftOptionsInOrder = Array[Resource("res://itemResource.gd")]([])
+craftOptionsInOrder = Array[Resource("res://itemFiles/itemResource.gd")]([])

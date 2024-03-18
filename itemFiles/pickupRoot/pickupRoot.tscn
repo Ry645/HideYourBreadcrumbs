@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://db5yamm5e8qm3"]
 
-[ext_resource type="Script" path="res://pickupRoot.gd" id="1_b8ubg"]
+[ext_resource type="Script" path="res://itemFiles/pickupRoot/pickupRoot.gd" id="1_b8ubg"]
 [ext_resource type="Resource" uid="uid://cq5pt8oto2ch3" path="res://itemFiles/itemScenesAndData/kimchi/kimchi.tres" id="2_awphb"]
 
 

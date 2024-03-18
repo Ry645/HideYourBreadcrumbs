@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://d05a72ajgg88t" path="res://player/crosshair.png" id="3_hbylk"]
 [ext_resource type="PackedScene" uid="uid://2vk4ss44tmk0" path="res://build_tool.tscn" id="4_buo6t"]
 [ext_resource type="PackedScene" uid="uid://bqpgpcfk3m74d" path="res://player/inventory/inventory.tscn" id="4_rxufc"]
-[ext_resource type="Script" path="res://pickupRoot.gd" id="5_fbv1i"]
+[ext_resource type="Script" path="res://itemFiles/pickupRoot/pickupRoot.gd" id="5_fbv1i"]
 [ext_resource type="PackedScene" uid="uid://d4jj1eyu27v1u" path="res://player/inventory/hotbar/hotbar.tscn" id="5_njuh6"]
 [ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://itemFiles/itemScenesAndData/kimchi/jongga_kimchi.png" id="6_6nooe"]
 [ext_resource type="Script" path="res://player/craftingRay.gd" id="6_rareb"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="7_5la5k"]
-[ext_resource type="Script" path="res://itemResource.gd" id="8_37rge"]
+[ext_resource type="Script" path="res://itemFiles/itemResource.gd" id="8_37rge"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t0x5e"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.gd" id="1_hegrf"]
 [ext_resource type="PackedScene" uid="uid://cib8d2uieqpgn" path="res://blenderModels/kimchiJar.blend" id="1_rb8kr"]
-[ext_resource type="Script" path="res://colliderItem.gd" id="3_1x816"]
+[ext_resource type="Script" path="res://itemFiles/colliderItem.gd" id="3_1x816"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ycvis"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)

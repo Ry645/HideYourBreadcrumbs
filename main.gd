@@ -12,7 +12,6 @@ func _ready():
 
 func setPlayerVarsOnReady():
 	player.main = self
-
 func setup():
 	CraftingDictionary.setCraftOptions(craftResources.array)
 	#print(CraftingDictionary.craftOptions)

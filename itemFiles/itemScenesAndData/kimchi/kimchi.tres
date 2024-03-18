@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://itemFiles/itemScenesAndData/kimchi/jongga_kimchi.png" id="1_s082a"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="2_cvd26"]
-[ext_resource type="Script" path="res://itemResource.gd" id="3_j7lcg"]
+[ext_resource type="Script" path="res://itemFiles/itemResource.gd" id="3_j7lcg"]
 
 [resource]
 script = ExtResource("3_j7lcg")

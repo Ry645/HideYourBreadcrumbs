@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
-[ext_resource type="Resource" uid="uid://b0dc8vj3g8csv" path="res://allCraftResources.tres" id="2_jxq7x"]
+[ext_resource type="Resource" uid="uid://bom6i7g34ew08" path="res://itemFiles/craftScripts/allCraftResources.tres" id="2_au0a8"]
 [ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
-[ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://pickupRoot.tscn" id="4_hpwjt"]
+[ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="4_hpwjt"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
 
@@ -23,7 +23,7 @@ glow_enabled = true
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_6cujt")
-craftResources = ExtResource("2_jxq7x")
+craftResources = ExtResource("2_au0a8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
