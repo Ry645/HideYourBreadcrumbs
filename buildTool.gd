@@ -16,4 +16,4 @@ func _on_hotbar_place_item(itemRes, mainNode):
 		newItemInWorld.global_position = get_collision_point()
 		
 		#print(get_collision_point())
-		print("place")
+		#print("place")

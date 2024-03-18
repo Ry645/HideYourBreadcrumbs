@@ -15,4 +15,4 @@ func setPlayerVarsOnReady():
 
 func setup():
 	CraftingDictionary.setCraftOptions(craftResources.array)
-	print(CraftingDictionary.craftOptions)
+	#print(CraftingDictionary.craftOptions)

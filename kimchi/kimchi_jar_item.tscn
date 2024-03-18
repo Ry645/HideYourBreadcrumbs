@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://kimchi/kimchi_jar_item.gd" id="1_hegrf"]
 [ext_resource type="PackedScene" uid="uid://cib8d2uieqpgn" path="res://blenderModels/kimchiJar.blend" id="1_rb8kr"]
-[ext_resource type="Script" path="res://colliderItem.gd" id="3_d5sgv"]
+[ext_resource type="Script" path="res://colliderItem.gd" id="3_1x816"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ycvis"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -17,7 +17,7 @@ metadata/itemType = &"Kimchi"
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0.08, 0)
-script = ExtResource("3_d5sgv")
+script = ExtResource("3_1x816")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ycvis")

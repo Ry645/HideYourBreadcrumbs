@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=5 format=3 uid="uid://cq5pt8oto2ch3"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://cq5pt8oto2ch3"]
 
-[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://carpetStrand/carpetStrand.tres" id="1_olhqr"]
 [ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://kimchi/jongga_kimchi.png" id="1_s082a"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi/kimchi_jar_item.tscn" id="2_cvd26"]
 [ext_resource type="Script" path="res://itemResource.gd" id="3_j7lcg"]
@@ -11,4 +10,3 @@ itemType = &"Kimchi"
 itemClass = ExtResource("2_cvd26")
 image = ExtResource("1_s082a")
 isPlaceable = true
-craftOptionsInOrder = Array[ExtResource("3_j7lcg")]([ExtResource("1_olhqr")])

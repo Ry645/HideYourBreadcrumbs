@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
-[ext_resource type="Resource" uid="uid://b0dc8vj3g8csv" path="res://allCraftResources.tres" id="2_jxq7x"]
+[ext_resource type="Resource" path="res://itemScripts/craftingScripts/allCraftResources.tres" id="2_jxq7x"]
 [ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
-[ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://pickupRoot.tscn" id="4_hpwjt"]
+[ext_resource type="PackedScene" uid="uid://vfgayej2w5gh" path="res://itemScripts/pickupNode/pickupRoot.tscn" id="4_hpwjt"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
-[ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
+[ext_resource type="Script" path="res://itemScripts/pickupNode/deleteOnRuntime.gd" id="7_4i6js"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

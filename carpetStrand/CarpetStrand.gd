@@ -1,6 +1,6 @@
 extends Node3D
 
-class_name CarpetStrand
+class_name CarpetRope
 
 var pickupRoot
 @onready var collider = %Collider

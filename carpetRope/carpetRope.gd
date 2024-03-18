@@ -1,0 +1,12 @@
+extends Node3D
+
+class_name CarpetStrand
+
+var pickupRoot
+@onready var static_body_3d = %StaticBody3D
+
+func _ready():
+	static_body_3d.itemRoot = self
+
+func craftInto():
+	pickupRoot.craftInto()

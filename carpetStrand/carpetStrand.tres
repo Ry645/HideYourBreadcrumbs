@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_x184c")
-itemType = &"carpetStrand"
+itemType = &"Carpet Strand"
 itemClass = ExtResource("2_6ym4u")
 image = ExtResource("1_0ot6u")
 isPlaceable = true

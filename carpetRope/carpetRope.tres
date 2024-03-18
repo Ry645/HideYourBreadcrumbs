@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://ddh2oen4p8rxo"]
+
+[ext_resource type="Texture2D" uid="uid://cqjbyg7m6y220" path="res://carpetRope/rope.png" id="1_0m6h1"]
+[ext_resource type="Script" path="res://itemResource.gd" id="1_7ppad"]
+[ext_resource type="PackedScene" uid="uid://cvdqlmn85un37" path="res://carpetRope/carpetRope.tscn" id="2_70ks1"]
+
+[resource]
+script = ExtResource("1_7ppad")
+itemType = &"Carpet Rope"
+itemClass = ExtResource("2_70ks1")
+image = ExtResource("1_0m6h1")
+isPlaceable = true
