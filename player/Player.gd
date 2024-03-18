@@ -19,6 +19,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera := %Camera3D
 @onready var inventory:Inventory = %inventory
 @onready var hotbar:Hotbar = %hotbar
+@onready var crafting_ray:CraftingRay = %craftingRay
+
 
 var main
 
@@ -97,6 +99,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("placeItem"):
 		emit_signal("attemptToPlaceItem", main)
+	
+	if Input.is_action_just_pressed("craft0"):
+		crafting_ray.findItemToCraft()
 
 
 func _on_collider_item_confirmed(item):

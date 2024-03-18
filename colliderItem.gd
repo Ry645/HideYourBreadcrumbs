@@ -9,3 +9,6 @@ func _on_pickupRay_itemGrabbed(player):
 	if !is_connected("itemConfirmed", Callable(player, "_on_collider_item_confirmed")):
 		connect("itemConfirmed", Callable(player, "_on_collider_item_confirmed"))
 	emit_signal("itemConfirmed", itemRoot.pickupRoot)
+
+func craftInto():
+	itemRoot.craftInto()

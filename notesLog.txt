@@ -7,5 +7,7 @@ just stick with hard-coded values, and abstract it when the time comes
 
 
 TODO
-fix up pickup ray detection (colliderItem.gd, pickup node)
+2. watch godotgineer inventory Mr. G video again and figure out how to do crafting system
+
+1. fix up pickup ray detection (colliderItem.gd, pickup node) DONE
 

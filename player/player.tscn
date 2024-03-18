@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bittfqbtl3roe"]
+[gd_scene load_steps=11 format=3 uid="uid://bittfqbtl3roe"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_wyll7"]
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqpgpcfk3m74d" path="res://player/inventory/inventory.tscn" id="4_rxufc"]
 [ext_resource type="PackedScene" uid="uid://d4jj1eyu27v1u" path="res://player/inventory/hotbar/hotbar.tscn" id="5_njuh6"]
 [ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://pickupRoot.tscn" id="5_qr47u"]
+[ext_resource type="Script" path="res://player/craftingRay.gd" id="6_rareb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t0x5e"]
 
@@ -51,6 +52,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="buildTool" parent="neck/Camera3D" instance=ExtResource("4_buo6t")]
 pickupRootClass = ExtResource("5_qr47u")
+
+[node name="craftingRay" type="RayCast3D" parent="neck/Camera3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -5)
+script = ExtResource("6_rareb")
 
 [node name="inventory" parent="." instance=ExtResource("4_rxufc")]
 unique_name_in_owner = true

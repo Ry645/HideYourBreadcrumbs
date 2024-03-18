@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CraftResource" load_steps=4 format=3 uid="uid://b3lqhshk30rvv"]
+
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://carpetStrand/carpetStrand.tres" id="1_5fiqk"]
+[ext_resource type="Resource" uid="uid://cq5pt8oto2ch3" path="res://kimchi/kimchi.tres" id="2_8tr46"]
+[ext_resource type="Script" path="res://craftResource.gd" id="3_ddbpx"]
+
+[resource]
+script = ExtResource("3_ddbpx")
+baseItem = ExtResource("2_8tr46")
+craftOptionsInOrder = Array[Resource("res://itemResource.gd")]([ExtResource("1_5fiqk")])

@@ -7,3 +7,6 @@ var pickupRoot
 
 func _ready():
 	static_body_3d.itemRoot = self
+
+func craftInto():
+	pickupRoot.craftInto()

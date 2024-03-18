@@ -1,6 +1,6 @@
 extends Resource
 
-class_name itemResource
+class_name ItemResource
 
 @export var itemType:StringName
 @export var itemClass:PackedScene
