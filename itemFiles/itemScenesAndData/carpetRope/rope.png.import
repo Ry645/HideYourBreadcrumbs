@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjp0r1pf3bt15"
-path="res://.godot/imported/carpetStrandImage.png-35a9a2016c7c6dda5d2c6e0942b11d20.ctex"
+uid="uid://cqjbyg7m6y220"
+path="res://.godot/imported/rope.png-9e5c18a83d25b4e4885e7295cb2307ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://carpetStrand/carpetStrandImage.png"
-dest_files=["res://.godot/imported/carpetStrandImage.png-35a9a2016c7c6dda5d2c6e0942b11d20.ctex"]
+source_file="res://itemFiles/itemScenesAndData/carpetRope/rope.png"
+dest_files=["res://.godot/imported/rope.png-9e5c18a83d25b4e4885e7295cb2307ed.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://b0dc8vj3g8csv" path="res://allCraftResources.tres" id="2_jxq7x"]
 [ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
 [ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://pickupRoot.tscn" id="4_hpwjt"]
-[ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
+[ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]

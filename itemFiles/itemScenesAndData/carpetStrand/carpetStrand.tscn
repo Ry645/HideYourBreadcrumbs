@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://wo8e8pfrqwdh"]
 
-[ext_resource type="Script" path="res://carpetStrand/carpetStrand.gd" id="1_cgplq"]
+[ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.gd" id="1_cgplq"]
 [ext_resource type="Script" path="res://colliderItem.gd" id="2_8skkc"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_jc36l"]

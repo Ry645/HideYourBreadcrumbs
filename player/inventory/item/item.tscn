@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://u01q4h3q3nq4"]
 
 [ext_resource type="Script" path="res://player/inventory/item/item.gd" id="1_a1amq"]
-[ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://kimchi/jongga_kimchi.png" id="2_276fr"]
+[ext_resource type="Texture2D" uid="uid://dbq7e58mjbrks" path="res://itemFiles/itemScenesAndData/kimchi/jongga_kimchi.png" id="2_276fr"]
 
 [node name="item" type="Node2D"]
 z_index = 1

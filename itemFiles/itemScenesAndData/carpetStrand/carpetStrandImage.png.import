@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbq7e58mjbrks"
-path="res://.godot/imported/jongga_kimchi.png-42184f92885a1cc0662c9ea2d17fcf63.ctex"
+uid="uid://bjp0r1pf3bt15"
+path="res://.godot/imported/carpetStrandImage.png-4ee8230d0881f453de4329b14cf97e63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kimchi/jongga_kimchi.png"
-dest_files=["res://.godot/imported/jongga_kimchi.png-42184f92885a1cc0662c9ea2d17fcf63.ctex"]
+source_file="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandImage.png"
+dest_files=["res://.godot/imported/carpetStrandImage.png-4ee8230d0881f453de4329b14cf97e63.ctex"]
 
 [params]
 

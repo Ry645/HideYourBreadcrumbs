@@ -163,11 +163,11 @@ func setVisibility(isVisibile):
 func addTestItems():
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars(load("res://carpetStrand/carpetStrand.tres"))
+		itemObj.setVars(load("res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres"))
 		addItemToInventory(itemObj)
 	for i in range(20):
 		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars(load("res://kimchi/kimchi.tres"))
+		itemObj.setVars(load("res://itemFiles/itemScenesAndData/kimchi/kimchi.tres"))
 		addItemToInventory(itemObj)
 		pass
 

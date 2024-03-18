@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvdqlmn85un37"]
 
-[ext_resource type="Script" path="res://carpetRope/carpetRope.gd" id="1_dcil5"]
+[ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.gd" id="1_dcil5"]
 [ext_resource type="PackedScene" uid="uid://dbdc5k8os248s" path="res://blenderModels/carpetRope.blend" id="1_rlm0k"]
 [ext_resource type="Script" path="res://colliderItem.gd" id="3_1bif0"]
 

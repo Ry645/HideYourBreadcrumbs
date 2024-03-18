@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://cqy2giw5qj0s2"]
 
-[ext_resource type="Texture2D" uid="uid://bjp0r1pf3bt15" path="res://carpetStrand/carpetStrandImage.png" id="1_0ot6u"]
-[ext_resource type="PackedScene" uid="uid://wo8e8pfrqwdh" path="res://carpetStrand/carpetStrand.tscn" id="2_6ym4u"]
+[ext_resource type="Texture2D" uid="uid://bjp0r1pf3bt15" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandImage.png" id="1_0ot6u"]
+[ext_resource type="PackedScene" uid="uid://wo8e8pfrqwdh" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tscn" id="2_6ym4u"]
 [ext_resource type="Script" path="res://itemResource.gd" id="3_x184c"]
 
 [resource]

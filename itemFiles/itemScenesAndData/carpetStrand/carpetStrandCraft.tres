@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CraftResource" load_steps=4 format=3 uid="uid://c8shnnbp7q0nf"]
 
 [ext_resource type="Script" path="res://craftResource.gd" id="1_41bif"]
-[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://carpetStrand/carpetStrand.tres" id="1_l6awg"]
-[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://carpetRope/carpetRope.tres" id="2_p8lwl"]
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres" id="1_l6awg"]
+[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="2_p8lwl"]
 
 [resource]
 script = ExtResource("1_41bif")

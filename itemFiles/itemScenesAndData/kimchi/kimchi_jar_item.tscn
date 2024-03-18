@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd2flbl2iu7hj"]
 
-[ext_resource type="Script" path="res://kimchi/kimchi_jar_item.gd" id="1_hegrf"]
+[ext_resource type="Script" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.gd" id="1_hegrf"]
 [ext_resource type="PackedScene" uid="uid://cib8d2uieqpgn" path="res://blenderModels/kimchiJar.blend" id="1_rb8kr"]
 [ext_resource type="Script" path="res://colliderItem.gd" id="3_1x816"]
 
