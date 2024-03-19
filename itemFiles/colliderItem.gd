@@ -1,5 +1,7 @@
 extends StaticBody3D
 
+class_name ColliderItem
+
 signal itemConfirmed(item)
 
 var itemRoot

@@ -8,8 +8,17 @@ signal addItemToInventory(item)
 
 signal attemptToPlaceItem(mainNode)
 
-@export var SPEED = 5.0
-@export var JUMP_VELOCITY = 4.5
+@export var SPEED:float = 5.0
+@export var JUMP_VELOCITY:float = 4.5
+@export var CLIMB_VELOCITY:float = 4.5
+@export var CLIMB_OFF_SPEED_THRESHOLD:float = 3.0
+
+enum MovementState{
+	NORMAL,
+	CLIMBING
+}
+
+var currentMovementState = MovementState.NORMAL
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -20,7 +29,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var inventory:Inventory = %inventory
 @onready var hotbar:Hotbar = %hotbar
 @onready var crafting_ray:CraftingRay = %craftingRay
-
 
 var main
 
@@ -55,8 +63,11 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() || currentMovementState == MovementState.CLIMBING:
+			velocity.y = JUMP_VELOCITY
+			
+		currentMovementState = MovementState.NORMAL
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -72,7 +83,31 @@ func _physics_process(delta):
 		#used to stop player
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	if currentMovementState == MovementState.CLIMBING:
+		velocity = Vector3.ZERO
+		velocity.y = CLIMB_VELOCITY * Input.get_axis("down", "up")
+		
+		#print("climb")
+		
 	move_and_slide()
+	
+	#var a = get_last_slide_collision()
+	#if Input.is_action_just_pressed("sprint"):
+		#print(a)
+		
+	#the way this works is that it gets the collision you last slid on
+	#but don't do that
+	#use area3d instead
+	#INFO
+	
+	inputProcess()
+
+
+
+
+
+func inputProcess(): # to be called in physics process
 	
 	if Input.is_action_just_pressed("grab"):
 		#print("grab")
@@ -102,6 +137,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("craft0"):
 		crafting_ray.findItemToCraft()
+	
+
+func climbToggle(climb:bool):
+	if climb:
+		currentMovementState = MovementState.CLIMBING
+	else:
+		currentMovementState = MovementState.NORMAL
 
 
 func _on_collider_item_confirmed(item):
