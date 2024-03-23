@@ -16,6 +16,8 @@ var holdingItem:Item = null
 var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for split items evenly
 var awaitingRightClickReleaseForPlace:bool
 
+@export var testItems:Array[ItemResource]
+
 var focusedSlot:Slot
 var hoveredSlots:Array = []
 var slotsAreActive:bool
@@ -161,15 +163,11 @@ func setVisibility(isVisibile):
 
 
 func addTestItems():
-	for i in range(20):
-		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars(load("res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres"))
-		addItemToInventory(itemObj)
-	for i in range(20):
-		var itemObj:Item = itemClass.instantiate()
-		itemObj.setVars(load("res://itemFiles/itemScenesAndData/kimchi/kimchi.tres"))
-		addItemToInventory(itemObj)
-		pass
+	for item in testItems:
+		for i in range(20):
+			var itemObj:Item = itemClass.instantiate()
+			itemObj.setVars(item)
+			addItemToInventory(itemObj)
 
 func addToHoveredSlots(slot): #linked to signal to add slots when slots are hovered over
 	var unique = true

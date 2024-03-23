@@ -4,7 +4,7 @@ class_name ColliderItem
 
 signal itemConfirmed(item)
 
-var itemRoot
+var itemRoot:Node
 
 func _on_pickupRay_itemGrabbed(player):
 	#print(parentItem)
@@ -14,3 +14,10 @@ func _on_pickupRay_itemGrabbed(player):
 
 func craftInto():
 	itemRoot.craftInto()
+
+func getBuildSnapGlobalLocation():
+	if itemRoot.has_node("snapLocation"):
+		return itemRoot.get_node("snapLocation").global_position
+	else:
+		#print("snap location not there")
+		return false

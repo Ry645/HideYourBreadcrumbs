@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqpgpcfk3m74d"]
+[gd_scene load_steps=10 format=3 uid="uid://bqpgpcfk3m74d"]
 
 [ext_resource type="Script" path="res://player/inventory/inventory.gd" id="1_07m3y"]
 [ext_resource type="PackedScene" uid="uid://u01q4h3q3nq4" path="res://player/inventory/item/item.tscn" id="2_ch1w0"]
 [ext_resource type="Theme" uid="uid://dxajxgr6yuec0" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.tres" id="3_e3y2e"]
+[ext_resource type="Resource" uid="uid://cq5pt8oto2ch3" path="res://itemFiles/itemScenesAndData/kimchi/kimchi.tres" id="3_p6ygk"]
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres" id="4_don80"]
 [ext_resource type="StyleBox" uid="uid://bplh81lng7eau" path="res://player/inventory/inventoryBackground.tres" id="4_ib3bt"]
 [ext_resource type="PackedScene" uid="uid://cs8ljt4vij8lx" path="res://player/inventory/slot/slot.tscn" id="5_b8oxm"]
+[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="5_j4e5n"]
 [ext_resource type="PackedScene" uid="uid://bmyh64m2shslu" path="res://player/inventory/tooltip/tooltip.tscn" id="6_la5sj"]
 
 [node name="inventory" type="Node"]
 script = ExtResource("1_07m3y")
 itemClass = ExtResource("2_ch1w0")
+testItems = Array[Resource("res://itemFiles/itemResource.gd")]([ExtResource("3_p6ygk"), ExtResource("4_don80"), ExtResource("5_j4e5n")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true

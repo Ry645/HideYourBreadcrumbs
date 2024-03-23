@@ -15,7 +15,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnxpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_djkm6"]
-size = Vector3(1, 2, 1)
+size = Vector3(0.5, 2, 0.5)
 
 [sub_resource type="Resource" id="Resource_6iy7g"]
 script = ExtResource("8_37rge")
