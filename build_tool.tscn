@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://2vk4ss44tmk0"]
+[gd_scene load_steps=4 format=3 uid="uid://2vk4ss44tmk0"]
 
 [ext_resource type="Script" path="res://buildTool.gd" id="1_5davb"]
+[ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="2_s0gs6"]
+[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="3_uvja6"]
 
 [node name="buildTool" type="RayCast3D"]
 target_position = Vector3(0, 0, -4)
 script = ExtResource("1_5davb")
+pickupRootClass = ExtResource("2_s0gs6")
+itemsToExclude = Array[Resource("res://itemFiles/itemResource.gd")]([ExtResource("3_uvja6")])

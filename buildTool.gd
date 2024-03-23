@@ -3,6 +3,7 @@ extends RayCast3D
 class_name BuildTool
 
 @export var pickupRootClass:PackedScene
+@export var itemsToExclude:Array[ItemResource]
 
 var placeVector:Vector3
 
@@ -13,8 +14,13 @@ func _physics_process(_delta):
 func snapPlacement(snapTo:Vector3):
 	placeVector = snapTo
 
-func _on_hotbar_place_item(itemRes, mainNode, ignoreRayRange:bool = false):
-	if ignoreRayRange:
+func _on_hotbar_place_item(itemRes, mainNode, ignoreRayChecks:bool = false):
+	if !ignoreRayChecks:
+		for item in itemsToExclude:
+			if itemRes == item:
+				return
+	
+	if ignoreRayChecks:
 		placeItem(itemRes, mainNode)
 		return
 	if is_colliding():

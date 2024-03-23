@@ -51,4 +51,4 @@ script = ExtResource("7_4i6js")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 7.16617, 162)
 
 [node name="ropeLatchPoint2" parent="." instance=ExtResource("8_8t51t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175, 6, 150)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175, 11, 150)
