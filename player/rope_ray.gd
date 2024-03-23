@@ -12,6 +12,6 @@ func findLatch():
 		emit_signal("latchFound", get_collider())
 
 func itemResourceIsRope(itemRes):
-	print(itemRes)
-	print(ropeRes)
+	#print(itemRes)
+	#print(ropeRes)
 	return itemRes == ropeRes

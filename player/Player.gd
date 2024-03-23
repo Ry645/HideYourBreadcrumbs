@@ -159,7 +159,7 @@ func climbToggle(climb:bool):
 		currentMovementState = MovementState.NORMAL
 		print("surfacesClimbing went below 0")
 	
-	print(surfacesClimbing)
+	#print(surfacesClimbing)
 
 
 func _on_collider_item_confirmed(item):
