@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnfh414nt2aep"]
+[gd_scene load_steps=12 format=3 uid="uid://dnfh414nt2aep"]
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="4_hpwjt"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
+[ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="8_8t51t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,3 +46,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 1, 156)
 
 [node name="kimchi_jar_item" parent="pickupRoot" instance=ExtResource("5_lgthg")]
 script = ExtResource("7_4i6js")
+
+[node name="ropeLatchPoint" parent="." instance=ExtResource("8_8t51t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 7.16617, 162)
+
+[node name="ropeLatchPoint2" parent="." instance=ExtResource("8_8t51t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175, 6, 150)

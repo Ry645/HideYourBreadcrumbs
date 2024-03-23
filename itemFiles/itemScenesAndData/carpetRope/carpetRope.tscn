@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvdqlmn85un37"]
+[gd_scene load_steps=6 format=3 uid="uid://cvdqlmn85un37"]
 
 [ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.gd" id="1_dcil5"]
 [ext_resource type="PackedScene" uid="uid://dbdc5k8os248s" path="res://blenderModels/carpetRope.blend" id="1_rlm0k"]
 [ext_resource type="Script" path="res://itemFiles/climbColliderItem.gd" id="3_f1qtw"]
+[ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="4_c2k1g"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wyt5i"]
 height = 3.5
@@ -13,12 +14,13 @@ script = ExtResource("1_dcil5")
 static_body_3d = NodePath("carpetRopeModel/Cylinder/StaticBody3D")
 
 [node name="carpetRopeModel" parent="." instance=ExtResource("1_rlm0k")]
-transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 2, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, -2, 0)
 
 [node name="StaticBody3D" parent="carpetRopeModel/Cylinder" index="0"]
 script = ExtResource("3_f1qtw")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
@@ -26,7 +28,10 @@ shape = SubResource("CylinderShape3D_wyt5i")
 
 [node name="snapLocation" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="ropeLatchPoint" parent="." instance=ExtResource("4_c2k1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

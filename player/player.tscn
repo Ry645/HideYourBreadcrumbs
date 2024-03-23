@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bittfqbtl3roe"]
+[gd_scene load_steps=17 format=3 uid="uid://bittfqbtl3roe"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_wyll7"]
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://player/craftingRay.gd" id="6_rareb"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="7_5la5k"]
 [ext_resource type="Script" path="res://itemFiles/itemResource.gd" id="8_37rge"]
+[ext_resource type="PackedScene" uid="uid://dii78qo0t37da" path="res://player/rope_ray.tscn" id="10_21u66"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnxpb"]
 
@@ -54,6 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 unique_name_in_owner = true
 
 [node name="pickupRay" type="RayCast3D" parent="neck/Camera3D"]
+visible = false
 target_position = Vector3(0, 0, -3)
 script = ExtResource("2_7xmdn")
 
@@ -74,12 +76,20 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="buildTool" parent="neck/Camera3D" instance=ExtResource("4_buo6t")]
+unique_name_in_owner = true
+visible = false
 pickupRootClass = SubResource("PackedScene_ny1ft")
 
 [node name="craftingRay" type="RayCast3D" parent="neck/Camera3D"]
 unique_name_in_owner = true
+visible = false
 target_position = Vector3(0, 0, -5)
 script = ExtResource("6_rareb")
+
+[node name="ropeRay" parent="neck/Camera3D" instance=ExtResource("10_21u66")]
+unique_name_in_owner = true
+visible = false
+target_position = Vector3(0, 0, -10)
 
 [node name="inventory" parent="." instance=ExtResource("4_rxufc")]
 unique_name_in_owner = true
@@ -90,4 +100,5 @@ unique_name_in_owner = true
 [connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
 [connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
 [connection signal="grabItem" from="." to="neck/Camera3D/pickupRay" method="_on_player_grab_item"]
+[connection signal="latchFound" from="neck/Camera3D/ropeRay" to="." method="_on_rope_ray_latch_found"]
 [connection signal="placeItem" from="hotbar" to="neck/Camera3D/buildTool" method="_on_hotbar_place_item"]

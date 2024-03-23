@@ -6,7 +6,7 @@ signal grabItem(player)
 signal disappearItem()
 signal addItemToInventory(item)
 
-signal attemptToPlaceItem(mainNode)
+signal attemptToPlaceItem(mainNode, ignoreRayRange)
 
 @export var SPEED:float = 5.0
 @export var JUMP_VELOCITY:float = 4.5
@@ -30,6 +30,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var inventory:Inventory = %inventory
 @onready var hotbar:Hotbar = %hotbar
 @onready var crafting_ray:CraftingRay = %craftingRay
+@onready var rope_ray = %ropeRay
+@onready var build_tool:BuildTool = %buildTool
 
 var main
 
@@ -139,6 +141,8 @@ func inputProcess(): # to be called in physics process
 	if Input.is_action_just_pressed("craft0"):
 		crafting_ray.findItemToCraft()
 	
+	if Input.is_action_just_pressed("ropeThrow"):
+		rope_ray.findLatch()
 
 func climbToggle(climb:bool):
 	if climb:
@@ -164,3 +168,10 @@ func _on_collider_item_confirmed(item):
 		connect("disappearItem", Callable(item, "_on_player_disappear_item"))
 	emit_signal("addItemToInventory", item)
 	emit_signal("disappearItem")
+
+
+func _on_rope_ray_latch_found(latch):
+	if hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item != null:
+		if rope_ray.itemResourceIsRope(hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item.itemRes):
+			build_tool.snapPlacement(latch.global_position)
+			emit_signal("attemptToPlaceItem", main, true)

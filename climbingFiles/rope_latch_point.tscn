@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://du7iehs48ah1w"]
+
+[ext_resource type="Script" path="res://climbingFiles/rope_latch_point.gd" id="1_5w53y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2mlq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_555mc"]
+radius = 0.25
+height = 0.5
+
+[node name="ropeLatchPoint" type="Area3D"]
+script = ExtResource("1_5w53y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g2mlq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_555mc")
