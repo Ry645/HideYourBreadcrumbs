@@ -19,6 +19,7 @@ enum MovementState{
 }
 
 var currentMovementState = MovementState.NORMAL
+var surfacesClimbing:int = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -141,9 +142,20 @@ func inputProcess(): # to be called in physics process
 
 func climbToggle(climb:bool):
 	if climb:
-		currentMovementState = MovementState.CLIMBING
+		surfacesClimbing += 1
 	else:
+		surfacesClimbing -= 1
+	
+	if surfacesClimbing > 0:
+		currentMovementState = MovementState.CLIMBING
+	elif surfacesClimbing == 0:
 		currentMovementState = MovementState.NORMAL
+	else:
+		surfacesClimbing = 0
+		currentMovementState = MovementState.NORMAL
+		print("surfacesClimbing went below 0")
+	
+	print(surfacesClimbing)
 
 
 func _on_collider_item_confirmed(item):

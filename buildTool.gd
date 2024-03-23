@@ -2,16 +2,14 @@ extends RayCast3D
 
 @export var pickupRootClass:PackedScene
 
-@onready var place_location = %placeLocation
-
-
+var placeVector:Vector3
 
 func _physics_process(_delta):
-	place_location.global_position = get_collision_point()
+	placeVector = get_collision_point()
 	checkSnap()
 
 func snapPlacement(snapTo:Vector3):
-	place_location.global_position = snapTo
+	placeVector = snapTo
 
 func _on_hotbar_place_item(itemRes, mainNode):
 	if is_colliding():
@@ -24,7 +22,7 @@ func _on_hotbar_place_item(itemRes, mainNode):
 		var newItemInWorld:PickupRoot = pickupRootClass.instantiate()
 		newItemInWorld.itemRes = itemRes
 		mainNode.add_child(newItemInWorld)
-		newItemInWorld.global_position = place_location.global_position
+		newItemInWorld.global_position = placeVector
 		
 		#print(get_collision_point())
 		#print("place")
@@ -33,6 +31,10 @@ func _on_hotbar_place_item(itemRes, mainNode):
 # weird misalignment when snapping sometimes
 # most noticable when placing rope using snapping
 # FIX
+
+#bug caused by player movement
+#seems to lag by a frame and placement isn't instant
+#store the vector to fix
 func checkSnap():
 	#var a:Node3D
 	#a.has_node("%snapLocation")
