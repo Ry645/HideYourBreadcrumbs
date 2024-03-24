@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjuh1flkw620w"]
+
+[ext_resource type="Script" path="res://interactableProps/looseCarpetPatch/loose_carpet_patch.gd" id="1_5q3vm"]
+[ext_resource type="PackedScene" uid="uid://cwlno6726w3kp" path="res://blenderModels/looseCarpetPatch.blend" id="1_xl52r"]
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres" id="2_bgoap"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5r1v4"]
+
+[node name="looseCarpetPatch" type="Area3D"]
+script = ExtResource("1_5q3vm")
+itemToGet = ExtResource("2_bgoap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5r1v4")
+
+[node name="looseCarpetPatch" parent="." instance=ExtResource("1_xl52r")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

@@ -1,6 +1,6 @@
 extends RayCast3D
 
-#make sure to set collide with areas to true in inspector
+#make sure to set collide with areas to true in inspector when making rays like this one
 #INFO
 
 signal latchFound(latch:RopeLatchPoint)

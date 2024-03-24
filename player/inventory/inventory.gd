@@ -20,6 +20,7 @@ var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for 
 var awaitingRightClickReleaseForPlace:bool
 
 @export var testItems:Array[ItemResource]
+@export var canAddTestItems:bool = false
 
 var focusedSlot:Slot
 var hoveredSlots:Array = []
@@ -51,7 +52,8 @@ func _process(_delta):
 func _ready():
 	self.connect("resetSlots", Callable(self, "reset"))
 	connectSlotSignals()
-	addTestItems()
+	if canAddTestItems:
+		addTestItems()
 
 func slotGuiInput(event, slot):
 	#yes, I know that if I left click and right click on a single item at the same time, it deletes the item.
@@ -138,7 +140,7 @@ func _input(event):
 # weird bug that cropped up that prevents me from taking half a stack from a slot
 # maybe caused by my itemUpdate shenanigans
 # BUG
-func addItemToInventory(item):
+func addItemToInventory(item:Item):
 	var minHotbarIndex:int = (rowNumber-1) * columnNumber
 	var maxHotbarIndex:int = inventorySlots.get_children().size()
 	#all of this gets the hotbar row first
@@ -226,14 +228,19 @@ func searchRangeForEmptySlotsAndAddItem(minIndex:int, maxIndex:int, item:Item) -
 			##break
 
 
-func _on_player_add_item_to_inventory(item:PickupRoot):
+func _on_player_add_item_to_inventory(item):
 	#SceneTree
 	#addItemToInventory(Item.new(item.get_groups()[0])) #when you make this instance of a class, you're using the script, not the scene blueprint
 	# that's why it doesn't work like the rest of the item nodes   ****************/
 	
 	var itemObj = itemClass.instantiate()
+	
+	if item is PickupRoot:
+		itemObj.setVars(item.itemRes)
+	elif item is ItemResource:
+		itemObj.setVars(item)
+		
 	#itemObj.itemType = item.get_meta("itemType") #previous set
-	itemObj.setVars(item.itemRes)
 	#print(item.itemRes)
 	addItemToInventory(itemObj) #this way is better and won't lead to anymore fuckups
 	print("added")

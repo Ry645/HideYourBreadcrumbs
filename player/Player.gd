@@ -32,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var crafting_ray:CraftingRay = %craftingRay
 @onready var rope_ray = %ropeRay
 @onready var build_tool:BuildTool = %buildTool
+@onready var interact_ray:InteractRay = %interactRay
 
 var main
 
@@ -143,6 +144,11 @@ func inputProcess(): # to be called in physics process
 	
 	if Input.is_action_just_pressed("ropeThrow"):
 		rope_ray.findLatch()
+	
+	if Input.is_action_just_pressed("interact"):
+		interact_ray.getItem()
+
+
 
 func climbToggle(climb:bool):
 	if climb:
@@ -175,3 +181,7 @@ func _on_rope_ray_latch_found(latch):
 		if rope_ray.itemResourceIsRope(hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item.itemRes):
 			build_tool.snapPlacement(latch.global_position)
 			emit_signal("attemptToPlaceItem", main, true)
+
+
+func _on_interact_ray_item_found(item:ItemResource):
+	emit_signal("addItemToInventory", item)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnfh414nt2aep"]
+[gd_scene load_steps=13 format=3 uid="uid://dnfh414nt2aep"]
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
 [ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="8_8t51t"]
+[ext_resource type="PackedScene" uid="uid://cjuh1flkw620w" path="res://interactableProps/looseCarpetPatch/loose_carpet_patch.tscn" id="9_5hios"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,3 +62,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.9404, 28.8881, 152.657)
 
 [node name="ropeLatchPoint2" parent="." instance=ExtResource("8_8t51t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175, 11, 150)
+
+[node name="looseCarpetPatch" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.313, 0.8, 151.602)
+
+[node name="looseCarpetPatch10" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -177.427, 0.8, 136.202)
+
+[node name="looseCarpetPatch11" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.274, 0.8, 182.016)
+
+[node name="looseCarpetPatch2" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.236, 0.800001, 163.138)
+
+[node name="looseCarpetPatch3" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.815, 0.800001, 167.776)
+
+[node name="looseCarpetPatch4" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.907, 0.800002, 149.373)
+
+[node name="looseCarpetPatch5" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.892, 0.800003, 170.554)
+
+[node name="looseCarpetPatch6" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.279, 0.800002, 160.304)
+
+[node name="looseCarpetPatch7" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.287, 0.800003, 179.055)
+
+[node name="looseCarpetPatch8" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.525, 0.800003, 136.922)
+
+[node name="looseCarpetPatch9" parent="." instance=ExtResource("9_5hios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.803, 0.800004, 182.415)

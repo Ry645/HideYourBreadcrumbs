@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bittfqbtl3roe"]
+[gd_scene load_steps=18 format=3 uid="uid://bittfqbtl3roe"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_wyll7"]
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
 [ext_resource type="Texture2D" uid="uid://d05a72ajgg88t" path="res://player/crosshair.png" id="3_hbylk"]
+[ext_resource type="PackedScene" uid="uid://cb45jcvimblq1" path="res://player/interact_ray.tscn" id="3_spuwe"]
 [ext_resource type="PackedScene" uid="uid://2vk4ss44tmk0" path="res://build_tool.tscn" id="4_buo6t"]
 [ext_resource type="PackedScene" uid="uid://bqpgpcfk3m74d" path="res://player/inventory/inventory.tscn" id="4_rxufc"]
 [ext_resource type="Script" path="res://itemFiles/pickupRoot/pickupRoot.gd" id="5_fbv1i"]
@@ -40,6 +41,10 @@ _bundled = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wyll7")
+SPEED = null
+JUMP_VELOCITY = null
+CLIMB_VELOCITY = null
+CLIMB_OFF_SPEED_THRESHOLD = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xnxpb")
@@ -58,6 +63,9 @@ unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, 0, -3)
 script = ExtResource("2_7xmdn")
+
+[node name="interactRay" parent="neck/Camera3D" instance=ExtResource("3_spuwe")]
+unique_name_in_owner = true
 
 [node name="TextureRect" type="TextureRect" parent="neck/Camera3D"]
 anchors_preset = 8
@@ -100,5 +108,6 @@ unique_name_in_owner = true
 [connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
 [connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
 [connection signal="grabItem" from="." to="neck/Camera3D/pickupRay" method="_on_player_grab_item"]
+[connection signal="itemFound" from="neck/Camera3D/interactRay" to="." method="_on_interact_ray_item_found"]
 [connection signal="latchFound" from="neck/Camera3D/ropeRay" to="." method="_on_rope_ray_latch_found"]
 [connection signal="placeItem" from="hotbar" to="neck/Camera3D/buildTool" method="_on_hotbar_place_item"]
