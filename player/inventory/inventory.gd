@@ -135,19 +135,30 @@ func _input(event):
 		tooltipRoot.global_position = event.global_position
 
 
-
+# weird bug that cropped up that prevents me from taking half a stack from a slot
+# maybe caused by my itemUpdate shenanigans
+# BUG
 func addItemToInventory(item):
 	var minHotbarIndex:int = (rowNumber-1) * columnNumber
 	var maxHotbarIndex:int = inventorySlots.get_children().size()
 	#all of this gets the hotbar row first
 	
-	var itemWasAdded:bool = searchRangeToAddItem(minHotbarIndex, maxHotbarIndex, item)
+	var itemWasAdded:bool = searchRangeForStacksAndAddItem(minHotbarIndex, maxHotbarIndex, item)
 	if itemWasAdded:
 		return
-	#else
+		
+	itemWasAdded = searchRangeForStacksAndAddItem(0, minHotbarIndex, item)
+	if itemWasAdded:
+		return
+		
+	itemWasAdded = searchRangeForEmptySlotsAndAddItem(minHotbarIndex, maxHotbarIndex, item)
+	if itemWasAdded:
+		return
+		
+	itemWasAdded = searchRangeForEmptySlotsAndAddItem(0, minHotbarIndex, item)
 	
-	#this gets the rest of the rows
-	searchRangeToAddItem(0, minHotbarIndex, item)
+	##this gets the rest of the rows
+	#searchRangeToAddItem(0, minHotbarIndex, item)
 	
 	#for slot in inventorySlots.get_children():
 		#if !slot.item: #slot has no item
@@ -157,22 +168,59 @@ func addItemToInventory(item):
 			#slot.addItemNumber(item)
 			#break
 
-func searchRangeToAddItem(minIndex:int, maxIndex:int, item:Item) -> bool:
-	var itemWasAdded:bool = false
+func searchRangeForStacksAndAddItem(minIndex:int, maxIndex:int, item:Item) -> bool:
+	for i in range(minIndex, maxIndex):
+		var slot:Slot = inventorySlots.get_children()[i]
+		
+		if slot.item != null && slot.item.itemRes == item.itemRes:
+			slot.addItemNumber(item)
+			return true
 	
+	return false
+
+func searchRangeForEmptySlotsAndAddItem(minIndex:int, maxIndex:int, item:Item) -> bool:
 	for i in range(minIndex, maxIndex):
 		var slot:Slot = inventorySlots.get_children()[i]
 		
 		if !slot.item: #slot has no item
 			slot.addIntoSlot(item)
-			itemWasAdded = true
-			break
-		elif slot.item.itemRes == item.itemRes:
-			slot.addItemNumber(item)
-			itemWasAdded = true
-			break
+			return true
 	
-	return itemWasAdded
+	return false
+
+
+#previous logic
+#also didn't prioritize stacks
+#func searchRangeToAddItem(minIndex:int, maxIndex:int, item:Item) -> bool:
+	#for i in range(minIndex, maxIndex):
+		#var slot:Slot = inventorySlots.get_children()[i]
+		#
+		#if slot.item != null && item != null && slot.item.itemRes == item.itemRes:
+			#slot.addItemNumber(item)
+			#return true
+	#
+	#for i in range(minIndex, maxIndex):
+		#var slot:Slot = inventorySlots.get_children()[i]
+		#
+		#if !slot.item: #slot has no item
+			#slot.addIntoSlot(item)
+			#return true
+	#
+	#return false
+	#
+	##previous logic
+	##didn't prioritize stacks
+	##for i in range(minIndex, maxIndex):
+		##var slot:Slot = inventorySlots.get_children()[i]
+		##
+		##if !slot.item: #slot has no item
+			##slot.addIntoSlot(item)
+			##itemWasAdded = true
+			##break
+		##elif slot.item.itemRes == item.itemRes:
+			##slot.addItemNumber(item)
+			##itemWasAdded = true
+			##break
 
 
 func _on_player_add_item_to_inventory(item:PickupRoot):
