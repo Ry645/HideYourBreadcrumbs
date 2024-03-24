@@ -81,10 +81,12 @@ func createOneIntoSlot(newItem:Item):
 
 func pickHalfFromSlot():
 	var heldItem = itemClass.instantiate()
-	inventoryParentNode.add_child(heldItem)
+	
+	heldItem.setVarsFromItem(item)
 	heldItem.number = int(ceil(item.number/2.0))
 	item.number = item.number-heldItem.number
-	heldItem.setVarsFromItem(item)
+	
+	inventoryParentNode.add_child(heldItem)
 	item.update()
 	heldItem.update()
 	return heldItem

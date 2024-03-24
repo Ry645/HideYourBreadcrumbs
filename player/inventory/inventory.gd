@@ -143,6 +143,9 @@ func addItemToInventory(item):
 	var maxHotbarIndex:int = inventorySlots.get_children().size()
 	#all of this gets the hotbar row first
 	
+	
+	# maybe fix this up into a for loop for clarity
+	# TODO
 	var itemWasAdded:bool = searchRangeForStacksAndAddItem(minHotbarIndex, maxHotbarIndex, item)
 	if itemWasAdded:
 		return
