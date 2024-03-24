@@ -14,14 +14,14 @@ func _physics_process(_delta):
 func snapPlacement(snapTo:Vector3):
 	placeVector = snapTo
 
-func _on_hotbar_place_item(itemRes, mainNode, ignoreRayChecks:bool = false):
+func _on_hotbar_place_item(item:Item, mainNode, ignoreRayChecks:bool = false):
 	if !ignoreRayChecks:
-		for item in itemsToExclude:
-			if itemRes == item:
+		for ex in itemsToExclude:
+			if item.itemRes == ex:
 				return
 	
 	if ignoreRayChecks:
-		placeItem(itemRes, mainNode)
+		placeItem(item, mainNode)
 		return
 	if is_colliding():
 		#var newItemInWorld:Node3D = itemRes.itemClass.instantiate() # (WHY THE HELL IS THE ITEMCLASS DISAPPEARING = RESOLVED) because it has a recursion seizure and defaults to setting it as a null value
@@ -30,16 +30,19 @@ func _on_hotbar_place_item(itemRes, mainNode, ignoreRayChecks:bool = false):
 		# make sure you first make the prototype of the node in the parent you want to use it in, and then save the branch as a scene
 		# INFO
 		
-		placeItem(itemRes, mainNode)
+		placeItem(item, mainNode)
 		
 		#print(get_collision_point())
 		#print("place")
 
-func placeItem(itemRes, mainNode):
+func placeItem(item:Item, mainNode):
 	var newItemInWorld:PickupRoot = pickupRootClass.instantiate()
-	newItemInWorld.itemRes = itemRes
+	newItemInWorld.itemRes = item.itemRes
 	mainNode.add_child(newItemInWorld)
 	newItemInWorld.global_position = placeVector
+	
+	item.number -= 1
+	item.update()
 
 # weird misalignment when snapping sometimes
 # most noticable when placing rope using snapping

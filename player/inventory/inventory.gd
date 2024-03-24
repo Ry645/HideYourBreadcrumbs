@@ -7,6 +7,9 @@ class_name Inventory
 
 # let's gooooo i'm fixing it now
 
+@export var columnNumber:int = 9
+@export var rowNumber:int = 4
+
 @onready var inventorySlots = %GridContainer
 @onready var tooltipRoot:Tooltip = %tooltipRoot
 @onready var texture_rect = %TextureRect
@@ -134,13 +137,42 @@ func _input(event):
 
 
 func addItemToInventory(item):
-	for slot in inventorySlots.get_children():
+	var minHotbarIndex:int = (rowNumber-1) * columnNumber
+	var maxHotbarIndex:int = inventorySlots.get_children().size()
+	#all of this gets the hotbar row first
+	
+	var itemWasAdded:bool = searchRangeToAddItem(minHotbarIndex, maxHotbarIndex, item)
+	if itemWasAdded:
+		return
+	#else
+	
+	#this gets the rest of the rows
+	searchRangeToAddItem(0, minHotbarIndex, item)
+	
+	#for slot in inventorySlots.get_children():
+		#if !slot.item: #slot has no item
+			#slot.addIntoSlot(item)
+			#break
+		#elif slot.item.itemRes == item.itemRes:
+			#slot.addItemNumber(item)
+			#break
+
+func searchRangeToAddItem(minIndex:int, maxIndex:int, item:Item) -> bool:
+	var itemWasAdded:bool = false
+	
+	for i in range(minIndex, maxIndex):
+		var slot:Slot = inventorySlots.get_children()[i]
+		
 		if !slot.item: #slot has no item
 			slot.addIntoSlot(item)
+			itemWasAdded = true
 			break
 		elif slot.item.itemRes == item.itemRes:
 			slot.addItemNumber(item)
+			itemWasAdded = true
 			break
+	
+	return itemWasAdded
 
 
 func _on_player_add_item_to_inventory(item:PickupRoot):

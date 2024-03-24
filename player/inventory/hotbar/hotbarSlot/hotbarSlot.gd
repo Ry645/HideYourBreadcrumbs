@@ -8,6 +8,10 @@ var slotRef:Slot = null
 
 func updateSelf(slot):
 	slotRef = slot
+	if slotRef.item == null:
+		hideLabel()
+		return
+	
 	textLabel.text = str(slotRef.item.number)
 	rect.texture = slotRef.item.itemRes.image
 	if slotRef.item.number <= 0:

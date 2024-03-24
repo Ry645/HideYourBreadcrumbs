@@ -54,6 +54,7 @@ func addIntoSlot(newItem):
 	item = newItem
 	item.position = Vector2(0,0)
 	connectChild(item)
+	item.update()
 
 func addItemNumber(newItem):
 	item.number += newItem.number

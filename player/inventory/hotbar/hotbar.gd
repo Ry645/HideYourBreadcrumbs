@@ -8,7 +8,7 @@ extends Node2D
 
 @export var selectedStyle: Resource
 
-signal placeItem(itemRes, mainNode, ignoreRayRange)
+signal placeItem(item, mainNode, ignoreRayRange)
 
 @onready var player:Player
 @onready var hotbarInvSlots
@@ -46,9 +46,9 @@ func _on_player_attempt_to_place_item(mainNode, ignoreRayRange:bool = false):
 	if hotbarSlots[selectedSlotIndex].slotRef.item == null:
 		return
 	
-	var itemRes:Resource = hotbarSlots[selectedSlotIndex].slotRef.item.itemRes
-	if itemRes.isPlaceable:
-		emit_signal("placeItem", itemRes, mainNode, ignoreRayRange)
+	var item = hotbarSlots[selectedSlotIndex].slotRef.item
+	if item.itemRes.isPlaceable:
+		emit_signal("placeItem", item, mainNode, ignoreRayRange)
 
 
 func _initializeVarsOnReady(): #called by onready from player
@@ -58,5 +58,7 @@ func _initializeVarsOnReady(): #called by onready from player
 		hotbarSlots[i].slotRef = hotbarInvSlots[i]
 		hotbarInvSlots[i].connect("updated", Callable(hotbarSlots[i], "updateSelf"))
 		hotbarInvSlots[i].connect("childDisconnected", Callable(hotbarSlots[i], "hideLabel"))
+		
+		hotbarInvSlots[i].emit_signal("updated", hotbarSlots[i].slotRef)
 	
 	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)
