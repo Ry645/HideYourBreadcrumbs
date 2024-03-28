@@ -25,7 +25,6 @@ itemType = &"Kimchi"
 itemClass = ExtResource("7_5la5k")
 image = ExtResource("6_6nooe")
 isPlaceable = true
-otherItemClasses = Array[PackedScene]([])
 
 [sub_resource type="PackedScene" id="PackedScene_ny1ft"]
 _bundled = {
