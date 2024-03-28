@@ -21,8 +21,9 @@ func _on_player_disappear_item():
 	#print("poot")
 
 func craftInto(index:int = 0):
-	if CraftingDictionary.craftOptions[itemRes].size() == 0:
-		return
+	if CraftingDictionary.craftOptions[itemRes] != null:
+		if CraftingDictionary.craftOptions[itemRes].size() == 0:
+			return
 	
 	itemRes = CraftingDictionary.craftOptions[itemRes][index]
 	itemNode.queue_free()

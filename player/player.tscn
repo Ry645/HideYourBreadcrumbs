@@ -25,6 +25,7 @@ itemType = &"Kimchi"
 itemClass = ExtResource("7_5la5k")
 image = ExtResource("6_6nooe")
 isPlaceable = true
+otherItemClasses = Array[PackedScene]([])
 
 [sub_resource type="PackedScene" id="PackedScene_ny1ft"]
 _bundled = {
@@ -41,10 +42,6 @@ _bundled = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wyll7")
-SPEED = null
-JUMP_VELOCITY = null
-CLIMB_VELOCITY = null
-CLIMB_OFF_SPEED_THRESHOLD = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xnxpb")

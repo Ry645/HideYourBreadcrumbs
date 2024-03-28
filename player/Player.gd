@@ -6,7 +6,7 @@ signal grabItem(player)
 signal disappearItem()
 signal addItemToInventory(item)
 
-signal attemptToPlaceItem(mainNode, ignoreRayRange)
+signal attemptToPlaceItem(mainNode)
 
 @export var SPEED:float = 5.0
 @export var JUMP_VELOCITY:float = 4.5
@@ -178,9 +178,9 @@ func _on_collider_item_confirmed(item):
 
 func _on_rope_ray_latch_found(latch):
 	if hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item != null:
-		if rope_ray.itemResourceIsRope(hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item.itemRes):
-			build_tool.snapPlacement(latch.global_position)
-			emit_signal("attemptToPlaceItem", main, true)
+		var selectedItem:Item = hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item
+		if rope_ray.itemResourceIsRope(selectedItem.itemRes):
+			rope_ray.throwRope(selectedItem, main, latch.global_position)
 
 
 func _on_interact_ray_item_found(item:ItemResource):

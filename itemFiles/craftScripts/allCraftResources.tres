@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="AllCraftResources" load_steps=5 format=3 uid="uid://bom6i7g34ew08"]
+[gd_resource type="Resource" script_class="AllCraftResources" load_steps=6 format=3 uid="uid://bom6i7g34ew08"]
 
 [ext_resource type="Resource" uid="uid://cbxbw4ega175m" path="res://itemFiles/itemScenesAndData/kimchi/kimchiCraft.tres" id="1_8jdbd"]
 [ext_resource type="Resource" uid="uid://cnlhyu0qf10go" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRopeCraft.tres" id="2_1i6au"]
 [ext_resource type="Resource" uid="uid://dg7bfsxh2m75c" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandCraft.tres" id="3_0evyq"]
 [ext_resource type="Script" path="res://itemFiles/craftScripts/allCraftResources.gd" id="4_75ie7"]
+[ext_resource type="Resource" uid="uid://bpdje7x0krwod" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoilCraft.tres" id="4_xveko"]
 
 [resource]
 script = ExtResource("4_75ie7")
-array = Array[Resource("res://itemFiles/craftScripts/craftResource.gd")]([ExtResource("1_8jdbd"), ExtResource("2_1i6au"), ExtResource("3_0evyq")])
+array = Array[Resource("res://itemFiles/craftScripts/craftResource.gd")]([ExtResource("1_8jdbd"), ExtResource("2_1i6au"), ExtResource("3_0evyq"), ExtResource("4_xveko")])

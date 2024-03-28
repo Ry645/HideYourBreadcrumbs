@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="CraftResource" load_steps=4 format=3 uid="uid://bpdje7x0krwod"]
+[gd_resource type="Resource" script_class="CraftResource" load_steps=3 format=3 uid="uid://bpdje7x0krwod"]
 
 [ext_resource type="Resource" uid="uid://d02kbtqoryrn1" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoil.tres" id="1_rddp7"]
-[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="2_cnwl2"]
 [ext_resource type="Script" path="res://itemFiles/craftScripts/craftResource.gd" id="2_j25pm"]
 
 [resource]
 script = ExtResource("2_j25pm")
 baseItem = ExtResource("1_rddp7")
-craftOptionsInOrder = Array[Resource("res://itemFiles/itemResource.gd")]([ExtResource("2_cnwl2")])
+craftOptionsInOrder = Array[Resource("res://itemFiles/itemResource.gd")]([])

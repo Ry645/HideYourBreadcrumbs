@@ -3,7 +3,6 @@ extends RayCast3D
 class_name BuildTool
 
 @export var pickupRootClass:PackedScene
-@export var itemsToExclude:Array[ItemResource]
 
 var placeVector:Vector3
 
@@ -14,15 +13,7 @@ func _physics_process(_delta):
 func snapPlacement(snapTo:Vector3):
 	placeVector = snapTo
 
-func _on_hotbar_place_item(item:Item, mainNode, ignoreRayChecks:bool = false):
-	if !ignoreRayChecks:
-		for ex in itemsToExclude:
-			if item.itemRes == ex:
-				return
-	
-	if ignoreRayChecks:
-		placeItem(item, mainNode)
-		return
+func _on_hotbar_place_item(item:Item, mainNode):
 	if is_colliding():
 		#var newItemInWorld:Node3D = itemRes.itemClass.instantiate() # (WHY THE HELL IS THE ITEMCLASS DISAPPEARING = RESOLVED) because it has a recursion seizure and defaults to setting it as a null value
 		#mainNode.add_child(newItemInWorld)
@@ -61,3 +52,7 @@ func checkSnap():
 		else:
 			#print("fail in ", self)
 			pass
+
+
+func throwRope():
+	pass

@@ -5,7 +5,10 @@ extends RayCast3D
 
 signal latchFound(latch:RopeLatchPoint)
 
+@export var pickupRootClass:PackedScene
 @export var ropeRes:ItemResource
+
+@export var thrownRopeRes:ItemResource
 
 func findLatch():
 	if get_collider() is RopeLatchPoint:
@@ -15,3 +18,12 @@ func itemResourceIsRope(itemRes):
 	#print(itemRes)
 	#print(ropeRes)
 	return itemRes == ropeRes
+
+func throwRope(item:Item, mainNode, latchPosition:Vector3):
+	var newItemInWorld:PickupRoot = pickupRootClass.instantiate()
+	newItemInWorld.itemRes = thrownRopeRes
+	mainNode.add_child(newItemInWorld)
+	newItemInWorld.global_position = latchPosition
+	
+	item.number -= 1
+	item.update()

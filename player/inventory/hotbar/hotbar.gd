@@ -42,13 +42,13 @@ func updateSlotSelection(previousSlotIndex):
 	hotbarSlots[selectedSlotIndex].add_theme_stylebox_override("panel", selectedStyle)
 
 
-func _on_player_attempt_to_place_item(mainNode, ignoreRayRange:bool = false):
+func _on_player_attempt_to_place_item(mainNode):
 	if hotbarSlots[selectedSlotIndex].slotRef.item == null:
 		return
 	
 	var item = hotbarSlots[selectedSlotIndex].slotRef.item
 	if item.itemRes.isPlaceable:
-		emit_signal("placeItem", item, mainNode, ignoreRayRange)
+		emit_signal("placeItem", item, mainNode)
 
 
 func _initializeVarsOnReady(): #called by onready from player

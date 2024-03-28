@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dii78qo0t37da"]
+[gd_scene load_steps=5 format=3 uid="uid://dii78qo0t37da"]
 
 [ext_resource type="Script" path="res://player/rope_ray.gd" id="1_6h1a8"]
-[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="2_oc3br"]
+[ext_resource type="Resource" uid="uid://d02kbtqoryrn1" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoil.tres" id="2_75w24"]
+[ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="2_heey4"]
+[ext_resource type="Resource" uid="uid://ddh2oen4p8rxo" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.tres" id="2_mwyul"]
 
 [node name="ropeRay" type="RayCast3D"]
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true
 script = ExtResource("1_6h1a8")
-ropeRes = ExtResource("2_oc3br")
+pickupRootClass = ExtResource("2_heey4")
+ropeRes = ExtResource("2_75w24")
+thrownRopeRes = ExtResource("2_mwyul")
