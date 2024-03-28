@@ -5,6 +5,9 @@ DO NOT WORRY ABOUT ABSTRACTION
 it's generally not worth it since you'll forget how to set up the abstraction anyways
 just stick with hard-coded values, and abstract it when the time comes
 
+USE METHODS WHEN GETTING VARIABLES INSTEAD OF GETTING IT STRAIGHT FROM THE SOURCE
+allows for more flexible control flow
+
 
 TODO
 2. watch godotgineer inventory Mr. G video again and figure out how to do crafting system

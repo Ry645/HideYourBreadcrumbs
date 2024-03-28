@@ -2,7 +2,7 @@ extends Node3D
 
 class_name CarpetStrand
 
-var pickupRoot
+var pickupRoot:PickupRoot
 @onready var collider = %Collider
 
 func _ready():

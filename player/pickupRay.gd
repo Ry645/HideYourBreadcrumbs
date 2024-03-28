@@ -3,14 +3,14 @@
 
 extends RayCast3D
 
-signal itemGrabbed(player)
+signal returnItem(itemRes:ItemResource)
 
-
-func _on_player_grab_item(player):
+func _on_player_grab_item():
 	# collider means the first object that collides with the raycast
 	#print("pickup")
+	var grabbedItemRes:ItemResource
 	if get_collider():
-		#print("collide")
-		if !is_connected("itemGrabbed", Callable(get_collider(), "_on_pickupRay_itemGrabbed")):
-			connect("itemGrabbed", Callable(get_collider(), "_on_pickupRay_itemGrabbed"))
-			emit_signal("itemGrabbed", player) #to item collision
+		if get_collider().has_method("itemGrabbed"):
+			grabbedItemRes = get_collider().itemGrabbed()
+			emit_signal("returnItem", grabbedItemRes)
+			#print("collide")

@@ -16,7 +16,7 @@ func _ready():
 	else:
 		print("null itemResource in ", self)
 
-func _on_player_disappear_item():
+func disappear_item():
 	queue_free()
 	#print("poot")
 

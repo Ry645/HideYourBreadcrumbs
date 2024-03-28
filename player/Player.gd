@@ -2,7 +2,7 @@ class_name Player
 
 extends CharacterBody3D
 
-signal grabItem(player)
+signal grabItem()
 signal disappearItem()
 signal addItemToInventory(item)
 
@@ -115,7 +115,7 @@ func inputProcess(): # to be called in physics process
 	
 	if Input.is_action_just_pressed("grab"):
 		#print("grab")
-		emit_signal("grabItem", self) #to pickup ray
+		emit_signal("grabItem") #to pickup ray
 	
 	if Input.is_action_just_pressed("openInventory"):
 		if inventory.am_i_visible():
@@ -168,13 +168,12 @@ func climbToggle(climb:bool):
 	#print(surfacesClimbing)
 
 
-func _on_collider_item_confirmed(item):
-	#print("player")
-	if !is_connected("disappearItem", Callable(item, "_on_player_disappear_item")):
-		connect("disappearItem", Callable(item, "_on_player_disappear_item"))
-	emit_signal("addItemToInventory", item)
-	emit_signal("disappearItem")
-
+#func _on_collider_item_confirmed(item):
+	##print("player")
+	#if !is_connected("disappearItem", Callable(item, "_on_player_disappear_item")):
+		#connect("disappearItem", Callable(item, "_on_player_disappear_item"))
+	#emit_signal("addItemToInventory", item)
+	#emit_signal("disappearItem")
 
 func _on_rope_ray_latch_found(latch):
 	if hotbar.hotbarSlots[hotbar.selectedSlotIndex].slotRef.item != null:
@@ -185,3 +184,6 @@ func _on_rope_ray_latch_found(latch):
 
 func _on_interact_ray_item_found(item:ItemResource):
 	emit_signal("addItemToInventory", item)
+
+func _on_pickup_ray_return_item(itemRes:ItemResource):
+	emit_signal("addItemToInventory", itemRes)
