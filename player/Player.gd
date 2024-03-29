@@ -11,7 +11,9 @@ signal attemptToPlaceItem(mainNode)
 @export var SPEED:float = 5.0
 @export var JUMP_VELOCITY:float = 4.5
 @export var CLIMB_VELOCITY:float = 4.5
-@export var CLIMB_OFF_SPEED_THRESHOLD:float = 3.0
+
+@export var canFly:bool = false
+@export var gravityMultiplier:float = 1.0
 
 enum MovementState{
 	NORMAL,
@@ -63,12 +65,12 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	if !is_on_floor():
+		velocity.y -= gravity * delta * gravityMultiplier
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() || currentMovementState == MovementState.CLIMBING:
+		if is_on_floor() || currentMovementState == MovementState.CLIMBING || canFly:
 			velocity.y = JUMP_VELOCITY
 			
 		currentMovementState = MovementState.NORMAL
@@ -147,7 +149,6 @@ func inputProcess(): # to be called in physics process
 	
 	if Input.is_action_just_pressed("interact"):
 		interact_ray.getItem()
-
 
 
 func climbToggle(climb:bool):

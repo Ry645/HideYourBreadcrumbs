@@ -7,6 +7,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_5r1v4"]
 
 [node name="looseCarpetPatch" type="Area3D"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_5q3vm")
 itemToGet = ExtResource("2_bgoap")
 

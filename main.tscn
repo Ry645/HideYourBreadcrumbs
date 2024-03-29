@@ -37,7 +37,6 @@ environment = SubResource("Environment_muwvb")
 [node name="Player" parent="." instance=ExtResource("1_2blxo")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -180, 3, 156)
-JUMP_VELOCITY = 5.0
 
 [node name="room_2" parent="." instance=ExtResource("3_min3e")]
 transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)

@@ -10,10 +10,10 @@
 height = 3.5
 radius = 0.35
 
-[node name="carpetRope" type="Node3D" node_paths=PackedStringArray("static_body_3d")]
+[node name="carpetRope" type="Node3D" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_dcil5")
-static_body_3d = NodePath("carpetRopeModel/Cylinder/StaticBody3D")
 coiledRopeRes = ExtResource("2_x08v6")
+collider = NodePath("carpetRopeModel/Cylinder/StaticBody3D")
 
 [node name="carpetRopeModel" parent="." instance=ExtResource("1_rlm0k")]
 transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, -2, 0)

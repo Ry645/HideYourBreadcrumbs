@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bittfqbtl3roe"]
+[gd_scene load_steps=21 format=3 uid="uid://bittfqbtl3roe"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_wyll7"]
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="7_5la5k"]
 [ext_resource type="Script" path="res://itemFiles/itemResource.gd" id="8_37rge"]
 [ext_resource type="PackedScene" uid="uid://dii78qo0t37da" path="res://player/rope_ray.tscn" id="10_21u66"]
+[ext_resource type="Resource" uid="uid://cq5pt8oto2ch3" path="res://itemFiles/itemScenesAndData/kimchi/kimchi.tres" id="13_mk60u"]
+[ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres" id="14_lqjff"]
+[ext_resource type="Resource" uid="uid://d02kbtqoryrn1" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoil.tres" id="15_tig68"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnxpb"]
 
@@ -41,6 +44,9 @@ _bundled = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wyll7")
+JUMP_VELOCITY = 25.0
+canFly = true
+gravityMultiplier = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xnxpb")
@@ -58,6 +64,7 @@ unique_name_in_owner = true
 [node name="pickupRay" type="RayCast3D" parent="neck/Camera3D"]
 visible = false
 target_position = Vector3(0, 0, -3)
+collision_mask = 3
 script = ExtResource("2_7xmdn")
 
 [node name="interactRay" parent="neck/Camera3D" instance=ExtResource("3_spuwe")]
@@ -97,6 +104,8 @@ target_position = Vector3(0, 0, -10)
 
 [node name="inventory" parent="." instance=ExtResource("4_rxufc")]
 unique_name_in_owner = true
+testItems = Array[ExtResource("8_37rge")]([ExtResource("13_mk60u"), ExtResource("14_lqjff"), ExtResource("15_tig68")])
+canAddTestItems = true
 
 [node name="hotbar" parent="." instance=ExtResource("5_njuh6")]
 unique_name_in_owner = true

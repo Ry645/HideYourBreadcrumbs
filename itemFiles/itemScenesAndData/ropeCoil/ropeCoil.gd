@@ -1,17 +1,3 @@
-extends Node3D
+extends BaseItem
 
 class_name RopeCoil
-
-var wasThrown:bool
-
-var pickupRoot
-@onready var static_body_3d = %StaticBody3D
-
-func _ready():
-	static_body_3d.itemRoot = self
-
-func craftInto():
-	pickupRoot.craftInto()
-
-func setWasThrown(yes):
-	wasThrown = yes

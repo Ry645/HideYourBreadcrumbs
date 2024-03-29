@@ -1,17 +1,8 @@
-extends Node3D
+extends BaseItem
 
 class_name CarpetRope
 
-var pickupRoot
-@export var static_body_3d:StaticBody3D
-
 @export var coiledRopeRes:ItemResource
-
-func _ready():
-	static_body_3d.itemRoot = self
-
-func craftInto():
-	pickupRoot.craftInto()
 
 
 func _on_area_3d_body_entered(body:Node3D):
