@@ -10,7 +10,15 @@ allows for more flexible control flow
 
 
 TODO
-2. watch godotgineer inventory Mr. G video again and figure out how to do crafting system
+3. add in gloom effect like in Better Than Wolves except it's more deadly 
+
+4. make nightlight model for light in starter area
+
+5. make sure room is dim and gloomy
+
+
+Finished
+2. watch godotgineer inventory Mr. G video again and figure out how to do crafting system DONE
 
 1. fix up pickup ray detection (colliderItem.gd, pickup node) DONE
 

@@ -1,5 +1,10 @@
 class_name Player
 
+#default starting pos:
+#x: -180
+#y: 3
+#z: 156
+
 extends CharacterBody3D
 
 signal grabItem()

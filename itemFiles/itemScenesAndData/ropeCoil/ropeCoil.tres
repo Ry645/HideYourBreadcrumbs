@@ -10,4 +10,3 @@ itemType = &"Carpet Rope Coil"
 itemClass = ExtResource("2_ur3ck")
 image = ExtResource("1_fyt1f")
 isPlaceable = true
-otherItemClasses = Array[PackedScene]([])

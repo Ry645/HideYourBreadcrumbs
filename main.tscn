@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
 [ext_resource type="Resource" uid="uid://bom6i7g34ew08" path="res://itemFiles/craftScripts/allCraftResources.tres" id="2_au0a8"]
-[ext_resource type="PackedScene" uid="uid://7ahoq5xso08x" path="res://room_2.tscn" id="3_min3e"]
 [ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="4_hpwjt"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
 [ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="8_8t51t"]
 [ext_resource type="PackedScene" uid="uid://cjuh1flkw620w" path="res://interactableProps/looseCarpetPatch/loose_carpet_patch.tscn" id="9_5hios"]
+[ext_resource type="PackedScene" uid="uid://djffgfhn47irv" path="res://blenderModels/room3.blend" id="9_mjcjq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,8 +18,10 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_utujm")
 
 [sub_resource type="Environment" id="Environment_muwvb"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_puva6")
+ambient_light_source = 1
+ambient_light_color = Color(0.211765, 0.211765, 0.211765, 1)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -27,19 +29,12 @@ glow_enabled = true
 script = ExtResource("1_6cujt")
 craftResources = ExtResource("2_au0a8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_muwvb")
 
 [node name="Player" parent="." instance=ExtResource("1_2blxo")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -180, 3, 156)
-
-[node name="room_2" parent="." instance=ExtResource("3_min3e")]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
 
 [node name="pickupRoot" parent="." instance=ExtResource("4_hpwjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174, 1, 156)
@@ -94,3 +89,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.525, 0.800003, 136.922)
 
 [node name="looseCarpetPatch9" parent="." instance=ExtResource("9_5hios")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.803, 0.800004, 182.415)
+
+[node name="room3" parent="." instance=ExtResource("9_mjcjq")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
+
+[node name="nightlight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.15, 20.9052, 184.678)
+omni_range = 54.607
+omni_attenuation = 1.03527
+
+[node name="SpotLight3D" type="SpotLight3D" parent="nightlight"]
+transform = Transform3D(0.306312, -0.374493, 0.875173, 0.0523996, 0.924605, 0.377305, -0.950488, -0.0697144, 0.302841, 0, 0, 0)
+spot_range = 344.823
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="nightlight"]
+transform = Transform3D(0.240891, 0.0253631, -0.970221, 0.172295, 0.982663, 0.0684665, 0.955137, -0.183657, 0.232345, 0, 0, 0)
+spot_range = 66.646
+spot_attenuation = 0.812252
+spot_angle = 78.82
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="nightlight"]
+transform = Transform3D(0.979071, -0.163192, -0.121612, 0.202523, 0.840322, 0.502835, 0.0201346, -0.51694, 0.855785, 0, 0, 0)
+spot_range = 80.0

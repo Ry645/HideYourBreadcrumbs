@@ -107,3 +107,8 @@ interact={
 3d_physics/layer_1="mainLayer"
 3d_physics/layer_2="itemPickupLayer"
 3d_physics/layer_3="interactLayer"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/positional_shadow/atlas_size=8192
