@@ -1,17 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://blegx5fvddkrg"]
 
 [ext_resource type="Script" path="res://gloomArea/gloomArea.gd" id="1_e7bwf"]
-[ext_resource type="PackedScene" uid="uid://dqlwp63f8uxiv" path="res://blenderModels/gloomMeshes/baseGloomMesh.blend" id="2_k2wha"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5qyy0"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[ext_resource type="Material" uid="uid://dlxfih5p3nfg7" path="res://gloomArea/gloomFogMaterial.tres" id="2_0uk64"]
+[ext_resource type="Shape3D" uid="uid://dpt6layvc78xt" path="res://gloomArea/base/baseGloomCollision.tres" id="2_2e8lb"]
 
 [node name="GloomArea" type="Area3D"]
 script = ExtResource("1_e7bwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConcavePolygonShape3D_5qyy0")
+unique_name_in_owner = true
+shape = ExtResource("2_2e8lb")
 
-[node name="baseGloomMesh" parent="." instance=ExtResource("2_k2wha")]
-
-[editable path="baseGloomMesh"]
+[node name="FogVolume" type="FogVolume" parent="."]
+unique_name_in_owner = true
+material = ExtResource("2_0uk64")
