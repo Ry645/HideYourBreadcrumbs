@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dbdc5k8os248s"
-path="res://.godot/imported/carpetRope.blend-3ee59df6f37605f0f974a03bae43efdc.scn"
+uid="uid://ddmgx161ixehc"
+path="res://.godot/imported/ropeCoil.blend-ea20bff7f1ef25fb4f25a78d577b01b9.scn"
 
 [deps]
 
-source_file="res://blenderModels/carpetRope.blend"
-dest_files=["res://.godot/imported/carpetRope.blend-3ee59df6f37605f0f974a03bae43efdc.scn"]
+source_file="res://blenderModels/items/ropeCoil.blend"
+dest_files=["res://.godot/imported/ropeCoil.blend-ea20bff7f1ef25fb4f25a78d577b01b9.scn"]
 
 [params]
 

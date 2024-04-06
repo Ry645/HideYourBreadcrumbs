@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cib8d2uieqpgn"
-path="res://.godot/imported/kimchiJar.blend-bdc9f43ca31b55c5d390d5171f9c6e22.scn"
+uid="uid://dbdc5k8os248s"
+path="res://.godot/imported/carpetRope.blend-c39fb8cba4450bcee8b06c1bbd6a27ae.scn"
 
 [deps]
 
-source_file="res://blenderModels/kimchiJar.blend"
-dest_files=["res://.godot/imported/kimchiJar.blend-bdc9f43ca31b55c5d390d5171f9c6e22.scn"]
+source_file="res://blenderModels/items/carpetRope.blend"
+dest_files=["res://.godot/imported/carpetRope.blend-c39fb8cba4450bcee8b06c1bbd6a27ae.scn"]
 
 [params]
 

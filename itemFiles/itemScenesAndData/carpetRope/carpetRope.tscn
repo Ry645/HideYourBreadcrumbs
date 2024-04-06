@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvdqlmn85un37"]
 
 [ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetRope/carpetRope.gd" id="1_dcil5"]
-[ext_resource type="PackedScene" uid="uid://dbdc5k8os248s" path="res://blenderModels/carpetRope.blend" id="1_rlm0k"]
+[ext_resource type="PackedScene" uid="uid://dbdc5k8os248s" path="res://blenderModels/items/carpetRope.blend" id="1_rlm0k"]
 [ext_resource type="Resource" uid="uid://d02kbtqoryrn1" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoil.tres" id="2_x08v6"]
 [ext_resource type="Script" path="res://itemFiles/climbColliderItem.gd" id="3_f1qtw"]
 [ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="4_c2k1g"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ddmgx161ixehc"
-path="res://.godot/imported/ropeCoil.blend-3344ce8cbf7f0c3daee07624334a3b60.scn"
+uid="uid://cib8d2uieqpgn"
+path="res://.godot/imported/kimchiJar.blend-7a44c3871187c7f007ada2e882833a0d.scn"
 
 [deps]
 
-source_file="res://blenderModels/ropeCoil.blend"
-dest_files=["res://.godot/imported/ropeCoil.blend-3344ce8cbf7f0c3daee07624334a3b60.scn"]
+source_file="res://blenderModels/items/kimchiJar.blend"
+dest_files=["res://.godot/imported/kimchiJar.blend-7a44c3871187c7f007ada2e882833a0d.scn"]
 
 [params]
 
