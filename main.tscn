@@ -1,36 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnfh414nt2aep"]
+[gd_scene load_steps=12 format=3 uid="uid://dnfh414nt2aep"]
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
 [ext_resource type="Resource" uid="uid://bom6i7g34ew08" path="res://itemFiles/craftScripts/allCraftResources.tres" id="2_au0a8"]
+[ext_resource type="Environment" uid="uid://cmpkhmjnwshga" path="res://mainDefaultEnvironment.tres" id="3_ixfeo"]
 [ext_resource type="PackedScene" uid="uid://db5yamm5e8qm3" path="res://itemFiles/pickupRoot/pickupRoot.tscn" id="4_hpwjt"]
 [ext_resource type="PackedScene" uid="uid://dd2flbl2iu7hj" path="res://itemFiles/itemScenesAndData/kimchi/kimchi_jar_item.tscn" id="5_lgthg"]
 [ext_resource type="Script" path="res://deleteOnRuntime.gd" id="7_4i6js"]
 [ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="8_8t51t"]
 [ext_resource type="PackedScene" uid="uid://cjuh1flkw620w" path="res://interactableProps/looseCarpetPatch/loose_carpet_patch.tscn" id="9_5hios"]
 [ext_resource type="PackedScene" uid="uid://djffgfhn47irv" path="res://blenderModels/room3.blend" id="9_mjcjq"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utujm"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_puva6"]
-sky_material = SubResource("ProceduralSkyMaterial_utujm")
-
-[sub_resource type="Environment" id="Environment_muwvb"]
-background_mode = 1
-sky = SubResource("Sky_puva6")
-ambient_light_source = 1
-ambient_light_color = Color(0.211765, 0.211765, 0.211765, 1)
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://blegx5fvddkrg" path="res://gloomArea/gloomArea.tscn" id="11_mxvwt"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_6cujt")
 craftResources = ExtResource("2_au0a8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_muwvb")
+environment = ExtResource("3_ixfeo")
 
 [node name="Player" parent="." instance=ExtResource("1_2blxo")]
 unique_name_in_owner = true
@@ -90,9 +77,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.525, 0.800003, 136.922)
 [node name="looseCarpetPatch9" parent="." instance=ExtResource("9_5hios")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.803, 0.800004, 182.415)
 
-[node name="room3" parent="." instance=ExtResource("9_mjcjq")]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
-
 [node name="nightlight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.15, 20.9052, 184.678)
 omni_range = 189.096
+
+[node name="room3" parent="." instance=ExtResource("9_mjcjq")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
+
+[node name="Cube_048" parent="room3/bed" index="1"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.3, 0.0497618)
+
+[node name="GloomArea" parent="." instance=ExtResource("11_mxvwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.4, 2.6, 154.949)
+
+[editable path="room3"]
+[editable path="GloomArea"]
+[editable path="GloomArea/baseGloomMesh"]
