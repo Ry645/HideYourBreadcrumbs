@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dlxfih5p3nfg7" path="res://gloomArea/gloomFogMaterial.tres" id="2_0uk64"]
 [ext_resource type="Shape3D" uid="uid://dpt6layvc78xt" path="res://gloomArea/base/baseGloomCollision.tres" id="2_2e8lb"]
 
-[node name="GloomArea" type="Area3D"]
+[node name="gloomArea" type="Area3D"]
 script = ExtResource("1_e7bwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -14,3 +14,6 @@ shape = ExtResource("2_2e8lb")
 [node name="FogVolume" type="FogVolume" parent="."]
 unique_name_in_owner = true
 material = ExtResource("2_0uk64")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

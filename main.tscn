@@ -87,11 +87,11 @@ transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
 [node name="Cube_048" parent="room3/bed" index="1"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.3, 0.0497618)
 
-[node name="GloomArea" parent="." instance=ExtResource("11_mxvwt")]
+[node name="dresserTwoGloomArea" parent="." instance=ExtResource("11_mxvwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.4, 2.6, 154.949)
 
-[node name="FogVolume" parent="GloomArea" index="1"]
+[node name="FogVolume" parent="dresserTwoGloomArea" index="1"]
 size = Vector3(24, 3.6, 48)
 
 [editable path="room3"]
-[editable path="GloomArea"]
+[editable path="dresserTwoGloomArea"]

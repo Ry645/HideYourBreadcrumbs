@@ -33,7 +33,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #  :=  symbol means I KNOW WHAT TYPE THIS VAR IS instead of eh its whatever
 @onready var neck := %neck
-@onready var camera := %Camera3D
+@onready var camera:Camera3D = %Camera3D
 @onready var inventory:Inventory = %inventory
 @onready var hotbar:Hotbar = %hotbar
 @onready var crafting_ray:CraftingRay = %craftingRay
@@ -113,6 +113,7 @@ func _physics_process(delta):
 	#INFO
 	
 	inputProcess()
+	
 
 
 
