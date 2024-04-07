@@ -7,7 +7,13 @@
 
 [node name="hotbar" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_w3s7m")
 itemClass = ExtResource("2_5m481")
 selectedStyle = ExtResource("3_fjqic")
@@ -15,10 +21,11 @@ selectedStyle = ExtResource("3_fjqic")
 [node name="hotbarContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 8)
-offset_left = 267.0
-offset_top = 554.0
-offset_right = 875.0
-offset_bottom = 618.0
+layout_mode = 0
+offset_left = -304.0
+offset_top = -100.0
+offset_right = 304.0
+offset_bottom = -36.0
 columns = 9
 metadata/_edit_group_ = true
 
