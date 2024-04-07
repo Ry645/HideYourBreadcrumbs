@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://celoe5qu8a1dt" path="res://player/inventory/hotbar/hotbarSlot/hotbarSlot.tscn" id="2_n2r1c"]
 [ext_resource type="StyleBox" uid="uid://0p0x3dmjtj8g" path="res://player/inventory/selectedHotbarPanel.tres" id="3_fjqic"]
 
-[node name="hotbar" type="Node2D"]
+[node name="hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_w3s7m")
 itemClass = ExtResource("2_5m481")
 selectedStyle = ExtResource("3_fjqic")

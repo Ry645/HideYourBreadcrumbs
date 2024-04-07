@@ -1,6 +1,6 @@
 class_name Hotbar
 
-extends Node2D
+extends Control
 
 
 #@onready var inventory:Inventory = get_node("inventory")
