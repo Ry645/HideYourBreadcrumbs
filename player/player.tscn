@@ -115,6 +115,11 @@ canAddTestItems = true
 [node name="hotbar" parent="." instance=ExtResource("5_njuh6")]
 unique_name_in_owner = true
 
+[node name="gloomTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 60.0
+one_shot = true
+
 [connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
 [connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
 [connection signal="grabItem" from="." to="neck/Camera3D/pickupRay" method="_on_player_grab_item"]
@@ -122,3 +127,4 @@ unique_name_in_owner = true
 [connection signal="itemFound" from="neck/Camera3D/interactRay" to="." method="_on_interact_ray_item_found"]
 [connection signal="latchFound" from="neck/Camera3D/ropeRay" to="." method="_on_rope_ray_latch_found"]
 [connection signal="placeItem" from="hotbar" to="neck/Camera3D/buildTool" method="_on_hotbar_place_item"]
+[connection signal="timeout" from="gloomTimer" to="." method="_on_gloom_timer_timeout"]

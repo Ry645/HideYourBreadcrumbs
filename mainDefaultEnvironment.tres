@@ -16,3 +16,4 @@ tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+volumetric_fog_length = 300.0

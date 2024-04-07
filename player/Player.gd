@@ -20,6 +20,8 @@ signal attemptToPlaceItem(mainNode)
 @export var canFly:bool = false
 @export var gravityMultiplier:float = 1.0
 
+@export var gloomTimeLimit:float = 60
+
 enum MovementState{
 	NORMAL,
 	CLIMBING
@@ -40,6 +42,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var rope_ray = %ropeRay
 @onready var build_tool:BuildTool = %buildTool
 @onready var interact_ray:InteractRay = %interactRay
+@onready var gloom_timer:Timer = %gloomTimer
 
 var main
 
@@ -194,3 +197,16 @@ func _on_interact_ray_item_found(item:ItemResource):
 
 func _on_pickup_ray_return_item(itemRes:ItemResource):
 	emit_signal("addItemToInventory", itemRes)
+
+func gloomEntered(gloomArea:GloomArea):
+	camera.interpolateToExposure(gloomArea.alteredCameraExposure, gloomArea.exposureDarkenTime)
+	gloom_timer.start(gloomTimeLimit)
+
+func gloomExited(gloomArea:GloomArea):
+	camera.interpolateToExposure(gloomArea.defaultCameraExposure, gloomArea.exposureRecoverTime)
+	gloom_timer.stop()
+
+func _on_gloom_timer_timeout():
+	print("u ded")
+	#TODO
+	#create game failstate
