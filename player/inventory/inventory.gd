@@ -20,6 +20,7 @@ var awaitingLeftClickReleaseForPlace:bool #needed for clicking and dragging for 
 var awaitingRightClickReleaseForPlace:bool
 
 @export var testItems:Array[ItemResource]
+@export var testItemCounts:Array[int]
 @export var canAddTestItems:bool = false
 
 var focusedSlot:Slot
@@ -253,10 +254,12 @@ func setVisibility(isVisibile):
 
 
 func addTestItems():
-	for item in testItems:
-		for i in range(20):
+	while testItems.size() > testItemCounts.size():
+		testItemCounts.append(20)
+	for i in range(testItems.size()):
+		for j in range(testItemCounts[i]):
 			var itemObj:Item = itemClass.instantiate()
-			itemObj.setVars(item)
+			itemObj.setVars(testItems[i])
 			addItemToInventory(itemObj)
 
 func addToHoveredSlots(slot): #linked to signal to add slots when slots are hovered over
