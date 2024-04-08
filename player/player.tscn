@@ -49,9 +49,6 @@ _bundled = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wyll7")
-JUMP_VELOCITY = 25.0
-canFly = true
-gravityMultiplier = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xnxpb")
@@ -79,7 +76,6 @@ script = ExtResource("2_7xmdn")
 unique_name_in_owner = true
 
 [node name="TextureRect" type="TextureRect" parent="neck/Camera3D"]
-z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -119,7 +115,6 @@ canAddTestItems = true
 
 [node name="hotbar" parent="." instance=ExtResource("5_njuh6")]
 unique_name_in_owner = true
-z_index = 1
 
 [node name="gloomTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -127,6 +122,8 @@ wait_time = 60.0
 one_shot = true
 
 [node name="pixelateMask" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
 material = ExtResource("17_spsia")
 position = Vector2(576, 324)
 scale = Vector2(1152, 648)

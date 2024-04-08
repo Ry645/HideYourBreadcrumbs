@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnfh414nt2aep"]
+[gd_scene load_steps=11 format=3 uid="uid://dnfh414nt2aep"]
 
 [ext_resource type="PackedScene" uid="uid://bittfqbtl3roe" path="res://player/player.tscn" id="1_2blxo"]
 [ext_resource type="Script" path="res://main.gd" id="1_6cujt"]
@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://du7iehs48ah1w" path="res://climbingFiles/rope_latch_point.tscn" id="8_8t51t"]
 [ext_resource type="PackedScene" uid="uid://cjuh1flkw620w" path="res://interactableProps/looseCarpetPatch/loose_carpet_patch.tscn" id="9_5hios"]
 [ext_resource type="PackedScene" uid="uid://djffgfhn47irv" path="res://blenderModels/room3.blend" id="9_mjcjq"]
+[ext_resource type="Shape3D" uid="uid://dj2772tv6ifoj" path="res://gloomArea/underDresserTwo/dresserTwoGloomCollision.tres" id="9_sywnv"]
 [ext_resource type="PackedScene" uid="uid://blegx5fvddkrg" path="res://gloomArea/gloomArea.tscn" id="11_mxvwt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tw42y"]
+size = Vector3(243.199, 90, 249.591)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_6cujt")
@@ -81,8 +85,18 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.3,
 [node name="dresserTwoGloomArea" parent="." instance=ExtResource("11_mxvwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.4, 2.6, 154.949)
 
+[node name="CollisionShape3D" parent="dresserTwoGloomArea" index="0"]
+shape = ExtResource("9_sywnv")
+
 [node name="FogVolume" parent="dresserTwoGloomArea" index="1"]
 size = Vector3(24, 3.6, 48)
 
+[node name="wholeRoomGloomArea" parent="." instance=ExtResource("11_mxvwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.686, 3.195)
+
+[node name="CollisionShape3D" parent="wholeRoomGloomArea" index="0"]
+shape = SubResource("BoxShape3D_tw42y")
+
 [editable path="room3"]
 [editable path="dresserTwoGloomArea"]
+[editable path="wholeRoomGloomArea"]

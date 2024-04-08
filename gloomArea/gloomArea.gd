@@ -12,6 +12,7 @@ var exposureDarkenTime:float = 0.1 #in seconds
 var exposureRecoverTime:float = 1 #in seconds
 
 func _ready():
+	print(collision_shape_3d.global_position)
 	fog_volume.size = collision_shape_3d.shape.size
 
 
