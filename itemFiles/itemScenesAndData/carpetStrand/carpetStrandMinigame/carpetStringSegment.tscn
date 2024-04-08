@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjpgsruedjbve"]
+
+[ext_resource type="Texture2D" uid="uid://bkrvwlyxwfo3u" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandMinigame/carpetStrandSegment.png" id="1_5s5am"]
+[ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandMinigame/carpetStringSegment.gd" id="1_sr3tm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8tq33"]
+radius = 2.0
+height = 28.0
+
+[node name="stringSegment" type="RigidBody2D"]
+position = Vector2(0, 27)
+gravity_scale = 0.0
+script = ExtResource("1_sr3tm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8tq33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.655)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_5s5am")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, -14)
+node_b = NodePath("..")
+angular_limit_enabled = true
+angular_limit_lower = -1.5708
+angular_limit_upper = 1.5708

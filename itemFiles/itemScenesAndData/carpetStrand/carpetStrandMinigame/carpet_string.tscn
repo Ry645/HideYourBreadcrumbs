@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckeb657sgrnhy"]
+
+[ext_resource type="PackedScene" uid="uid://cjpgsruedjbve" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandMinigame/carpetStringSegment.tscn" id="1_2cin5"]
+[ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrandMinigame/carpet_string.gd" id="1_qe6ee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfl0"]
+size = Vector2(5, 5)
+
+[node name="carpetString" type="Node2D"]
+position = Vector2(228, 44)
+script = ExtResource("1_qe6ee")
+stringSegmentScene = ExtResource("1_2cin5")
+
+[node name="stringHolder" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+rotation = 0.942478
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stringHolder"]
+shape = SubResource("RectangleShape2D_oqfl0")
