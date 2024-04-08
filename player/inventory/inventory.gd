@@ -85,7 +85,7 @@ func slotGuiInput(event, slot):
 					#print("swap")
 					var tempItem = slot.item #need placeholder
 					slot.pickFromSlot() #grab item
-					tempItem.global_position = event.global_position #snap to cursor
+					tempItem.position = event.position + texture_rect.position + inventorySlots.position + slot.position
 					slot.putIntoSlot(holdingItem) # slap into slot
 					holdingItem = tempItem #complete
 				awaitingLeftClickReleaseForPlace = false
@@ -105,7 +105,7 @@ func slotGuiInput(event, slot):
 		elif event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && holdingItem == null && slot.item != null && !awaitingRightClickReleaseForPlace: #take item from slot
 			holdingItem = slot.item
 			slot.pickFromSlot()
-			holdingItem.global_position = event.global_position
+			holdingItem.position = event.position + texture_rect.position + inventorySlots.position + slot.position
 		
 		
 		
@@ -125,7 +125,7 @@ func slotGuiInput(event, slot):
 		elif event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && holdingItem == null && slot.item != null && !awaitingLeftClickReleaseForPlace: # take half
 			#print("half")
 			holdingItem = slot.pickHalfFromSlot()
-			holdingItem.global_position = event.global_position
+			holdingItem.position = event.position + texture_rect.position + inventorySlots.position + slot.position
 
 
 
@@ -134,8 +134,8 @@ func slotGuiInput(event, slot):
 func _input(event):
 	if event is InputEventMouseMotion: # move item and tooltip
 		if holdingItem != null:
-			holdingItem.global_position = event.global_position
-		tooltipRoot.global_position = event.global_position
+			holdingItem.position = event.position
+		tooltipRoot.position = event.position - texture_rect.position #HOW DA FUQ
 
 
 # weird bug that cropped up that prevents me from taking half a stack from a slot

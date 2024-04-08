@@ -3,7 +3,7 @@
 # SCRIPT != NODE
 # YOU ASSFACED IMBECILE
 
-extends Node2D
+extends Control
 
 # so this constructor is deriving directly from a script
 # and if you go to the inventory.gd with this symbol ****************/

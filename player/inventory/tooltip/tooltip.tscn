@@ -6,8 +6,10 @@
 [sub_resource type="Theme" id="Theme_tlt70"]
 default_font_size = 8
 
-[node name="tooltipRoot" type="Node2D"]
+[node name="tooltipRoot" type="Control"]
 visible = false
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_xfug4")
 
 [node name="tooltipBackground" type="TextureRect" parent="."]
