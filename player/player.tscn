@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bittfqbtl3roe"]
+[gd_scene load_steps=23 format=3 uid="uid://bittfqbtl3roe"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_wyll7"]
 [ext_resource type="Script" path="res://player/pickupRay.gd" id="2_7xmdn"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dii78qo0t37da" path="res://player/rope_ray.tscn" id="10_21u66"]
 [ext_resource type="Resource" uid="uid://cqy2giw5qj0s2" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.tres" id="14_lqjff"]
 [ext_resource type="Resource" uid="uid://d02kbtqoryrn1" path="res://itemFiles/itemScenesAndData/ropeCoil/ropeCoil.tres" id="15_tig68"]
-[ext_resource type="Material" uid="uid://clr0nxocwpntk" path="res://pixelationShader.tres" id="17_spsia"]
+[ext_resource type="PackedScene" uid="uid://b7pypnh0ntrxu" path="res://pixelate_mask.tscn" id="17_gsc7c"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnxpb"]
 
@@ -44,8 +44,6 @@ _bundled = {
 "variants": [ExtResource("5_fbv1i"), SubResource("Resource_6iy7g")],
 "version": 3
 }
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_dmeoh"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wyll7")
@@ -121,13 +119,8 @@ unique_name_in_owner = true
 wait_time = 60.0
 one_shot = true
 
-[node name="pixelateMask" type="Sprite2D" parent="."]
-visible = false
-z_index = -1
-material = ExtResource("17_spsia")
-position = Vector2(576, 324)
-scale = Vector2(1152, 648)
-texture = SubResource("CanvasTexture_dmeoh")
+[node name="pixelateMask" parent="." instance=ExtResource("17_gsc7c")]
+anchors_preset = 15
 
 [connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
 [connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
