@@ -14,6 +14,7 @@ script = ExtResource("1_xfug4")
 
 [node name="tooltipBackground" type="TextureRect" parent="."]
 z_index = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = -28.0
 offset_right = 136.0
@@ -33,6 +34,7 @@ text = "Kimchi"
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 16.0
 offset_top = -28.0
 offset_right = 136.0
