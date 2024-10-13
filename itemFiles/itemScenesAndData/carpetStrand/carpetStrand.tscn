@@ -1,24 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://wo8e8pfrqwdh"]
+[gd_scene load_steps=4 format=3 uid="uid://wo8e8pfrqwdh"]
 
 [ext_resource type="Script" path="res://itemFiles/itemScenesAndData/carpetStrand/carpetStrand.gd" id="1_cgplq"]
 [ext_resource type="Script" path="res://itemFiles/colliderItem.gd" id="2_8skkc"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_jc36l"]
-size = Vector3(0.25, 0.25, 0.25)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7ggqs"]
-data = PackedVector3Array(0, 0.125, 0.125, 0.125, -0.125, 0.125, -0.125, -0.125, 0.125, 0, 0.125, -0.125, -0.125, -0.125, -0.125, 0.125, -0.125, -0.125, 0, 0.125, 0.125, 0, 0.125, -0.125, 0.125, -0.125, 0.125, 0, 0.125, -0.125, 0.125, -0.125, -0.125, 0.125, -0.125, 0.125, 0, 0.125, -0.125, 0, 0.125, 0.125, -0.125, -0.125, -0.125, 0, 0.125, 0.125, -0.125, -0.125, 0.125, -0.125, -0.125, -0.125, -0.125, -0.125, 0.125, 0.125, -0.125, 0.125, -0.125, -0.125, -0.125, 0.125, -0.125, 0.125, 0.125, -0.125, -0.125, -0.125, -0.125, -0.125)
+[ext_resource type="PackedScene" uid="uid://b7edw1xmdgyho" path="res://blenderModels/items/carpetStrand.blend" id="3_4n2lo"]
 
 [node name="CarpetStrand" type="Node3D" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_cgplq")
-collider = NodePath("MeshInstance3D/Collider")
+collider = NodePath("carpetStrand/BezierCurve/StaticBody3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PrismMesh_jc36l")
+[node name="carpetStrand" parent="." instance=ExtResource("3_4n2lo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="Collider" type="StaticBody3D" parent="MeshInstance3D"]
-unique_name_in_owner = true
+[node name="StaticBody3D" parent="carpetStrand/BezierCurve" index="0"]
 script = ExtResource("2_8skkc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Collider"]
-shape = SubResource("ConcavePolygonShape3D_7ggqs")
+[editable path="carpetStrand"]
