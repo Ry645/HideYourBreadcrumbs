@@ -122,6 +122,9 @@ one_shot = true
 [node name="pixelateMask" parent="." instance=ExtResource("17_gsc7c")]
 anchors_preset = 15
 
+[connection signal="addItemToInventory" from="." to="inventory" method="_on_player_add_item_to_inventory"]
+[connection signal="attemptToPlaceItem" from="." to="hotbar" method="_on_player_attempt_to_place_item"]
+[connection signal="grabItem" from="." to="neck/Camera3D/pickupRay" method="_on_player_grab_item"]
 [connection signal="returnItem" from="neck/Camera3D/pickupRay" to="." method="_on_pickup_ray_return_item"]
 [connection signal="itemFound" from="neck/Camera3D/interactRay" to="." method="_on_interact_ray_item_found"]
 [connection signal="latchFound" from="neck/Camera3D/ropeRay" to="." method="_on_rope_ray_latch_found"]
